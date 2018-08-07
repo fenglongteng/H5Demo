@@ -1,0 +1,411 @@
+html {height:100%;}
+body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+}
+ 
+.container {
+    position: relative;
+    width: 100%;
+}
+/* 根据测试auto是适应屏幕高宽比的，使用该属性，图片在确定高宽一个的同时自动按图片比例适应另一个 */
+img.normal {width:auto;}
+/* 相对于父视图，条件父视图要确定尺寸(百分比或高度) */
+img.big {height:50%;}
+img.small {height:10%;}
+p.max
+{
+    max-height:60px;
+    max-width:80%;
+    background-color:yellow;
+}
+p.min
+{
+	min-height:100px;
+    background-color:red;
+    min-width:150px;
+}
+
+/* visibility 占位置、影响布局 display不占位置、不影响布局 */
+
+/* visibility
+visible	默认值。元素是可见的。
+hidden	元素是不可见的。
+collapse	当在表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局。被行或列占据的空间会留给其他内容使用。如果此值被用在其他的元素上，会呈现为 "hidden"。
+inherit	规定应该从父元素继承 visibility 属性的值。 */
+
+/* display
+none	此元素不会被显示。
+block	此元素将显示为块级元素，此元素前后会带有换行符。
+inline	默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block	行内块元素。（CSS2.1 新增的值）
+list-item	此元素会作为列表显示。
+run-in	此元素会根据上下文作为块级元素或内联元素显示。
+compact	CSS 中有值 compact，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+marker	CSS 中有值 marker，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+table	此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。
+inline-table	此元素会作为内联表格来显示（类似 <table>），表格前后没有换行符。
+table-row-group	此元素会作为一个或多个行的分组来显示（类似 <tbody>）。
+table-header-group	此元素会作为一个或多个行的分组来显示（类似 <thead>）。
+table-footer-group	此元素会作为一个或多个行的分组来显示（类似 <tfoot>）。
+table-row	此元素会作为一个表格行显示（类似 <tr>）。
+table-column-group	此元素会作为一个或多个列的分组来显示（类似 <colgroup>）。
+table-column	此元素会作为一个单元格列显示（类似 <col>）
+table-cell	此元素会作为一个表格单元格显示（类似 <td> 和 <th>）
+table-caption	此元素会作为一个表格标题显示（类似 <caption>）
+inherit	规定应该从父元素继承 display 属性的值。 */
+
+
+
+h1.hidden {visibility: visible;}
+h1.hidden {visibility: hidden;}
+h1.display {display: none;}
+h1.display {display: none;}
+
+span
+{
+	display: block; 
+}
+/* inline none 显示、隐藏  */
+li{
+    display:inline;
+}
+/*注意：变更元素的显示类型看该元素是如何显示，它是什么样的元素。例如：一个内联元素设置为display:block是不允许有它内部的嵌套块元素。 */
+
+/* 这里可以把inline换成block，观察切换后的显示状态。 inline的时候内联显示，block块状显示*/
+p.display{
+    display: block;
+}
+span.display{
+    display: inline;
+}
+/* 删除某一行、列 */
+tr.collapse {
+    visibility: collapse;
+}
+
+/* 相对定位元素经常被用来作为绝对定位元素的容器块。 */
+/* 只影响显示，不影响流程布局 */
+p.pos_right
+{
+	position:relative;
+    left:20px;
+    width: 100;
+}
+/* 这里top 正负都不影响其他视图的布局，所以只是更改了显示效果不影响布局。 */
+h2.pos_top
+{
+	position:relative;
+	top:50px;
+}
+
+
+
+/* 注意看在屏幕的最上边左上角 */
+p.absolute
+{
+	position:absolute;
+	left:200px;
+	top:150px;
+}
+
+/* 粘性布局 类似iOS组头 */
+div.sticky {
+    /* position: -webkit-sticky;  Safari中使用 */
+    position: sticky;
+    top: 0;
+    padding: 5px;
+    background-color: #cae8ca;
+    border: 2px solid #4CAF50;
+  }
+
+  /* z-index 在z轴方向绘制顺序 */
+  img.z-index{
+    position:absolute;
+	left:300px;
+	top:350px;
+    z-index:-1;
+    clip:rect(0px,60px,200px,0px); /* 裁剪元素 */
+  }
+  /* 这个例子演示了overflow属性创建一个滚动条，当一个元素的内容在指定的区域过大时如何设置以适应。超出部分滚动 */
+  div.scroll
+{
+    background-color:#00FFFF;
+    width:100px;
+    height:100px;
+    overflow:scroll;
+}
+​
+div.hidden 
+{
+    background-color:#00FF00;
+    width:100px;
+    height:100px;
+    overflow:hidden;
+}
+
+div.auto
+{
+	background-color:#00FFFF;
+	width:150px;
+	height:150px;
+	overflow:auto;
+}
+
+/* 悬浮模式 */
+img.float
+{
+	float:right;
+}
+
+.thumbnail 
+{
+	float:left;
+	width:110px;
+	height:90px;
+	margin:5px;
+}
+
+.text_line
+{
+	clear:both;
+	margin-bottom:2px;
+}
+div.titleAndImg
+{
+	float:right;
+	width:120px;
+	margin:0 0 15px 20px;
+	padding:15px;
+	border:1px solid black;
+	text-align:center;
+}
+
+span.FirstUpper
+{
+	float:left;
+	width:1.2em;
+	font-size:400%;
+	font-family:algerian,courier;
+	line-height:80%;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+.header {
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.footer {
+    background-color: #444;
+    color: white;
+    padding: 15px;
+}
+.topmenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #777;
+}
+.topmenu li {
+    float: left;
+}
+.topmenu li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+.topmenu li a:hover {
+    background-color: #222;
+}
+.topmenu li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+.column {
+    float: left;
+    padding: 15px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.sidemenu {
+    width: 25%;
+}
+.content {
+    width: 75%;
+}
+.sidemenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.sidemenu li a {
+    margin-bottom: 4px;
+    display: block;
+    padding: 8px;
+    background-color: #eee;
+    text-decoration: none;
+    color: #666;
+}
+.sidemenu li a:hover {
+    background-color: #555;
+    color: white;
+}
+.sidemenu li a.active {
+    background-color: #008CBA;
+    color: white;
+}
+
+
+/* 对齐布局 */
+
+div.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    text-align: center;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+/* 注释：绝对定位元素会被从正常流中删除，并且能够交叠元素。
+提示: 当使用 position 来对齐元素时, 通常 <body> 元素会设置 margin 和 padding 。 这样可以避免在不同的浏览器中出现可见的差异。 */
+/* 当使用 position 属性时，IE8 以及更早的版本存在一个问题。如果容器元素（在我们的案例中是 <div class="container">）设置了指定的宽度，并且省略了 !DOCTYPE 声明，那么 IE8 以及更早的版本会在右侧增加 17px 的外边距。这似乎是为滚动条预留的空间。当使用 position 属性时，请始终设置 !DOCTYPE 声明： */
+/* body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    position: relative;
+    width: 100%;
+} */
+div.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+div.right2 {
+    float: right;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+div.body {
+    border: 3px solid #4CAF50;
+    padding: 5px;
+}
+
+.img1 {
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+    border: 3px solid #4CAF50;
+    padding: 5px;
+}
+
+.img2 {
+    float: right;
+}
+
+div.center1 {
+    padding: 70px 0;
+    border: 3px solid green;
+    text-align: center;
+}
+
+.center3 { 
+    height: 200px;
+    position: relative;
+    border: 3px solid green; 
+}
+
+.center3 p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #111;
+}
+
+/* 简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。 */
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+span.inline-block
+{
+	display:inline-block;
+	margin-top:10px;
+	width:100px;
+}
+
+

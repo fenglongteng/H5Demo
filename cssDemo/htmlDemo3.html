@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>htmlDemo3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="cssDemo3.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <p>I am a
+        <i>strong</i> man. I am a
+        <i>strong</i> man.</p>
+    <!-- 这里p才是父中的第一个元素 -->
+    <p>I am a
+        <i>strong</i> man. I am a
+        <i>strong</i> man.</p>
+    <div>
+        <p>段落 1。 在 div 中。</p>
+        <h1>中间标题</h1>
+        <span>
+            <p>段落11.嵌套在span中</p>
+        </span>
+        <p>段落 2。 在 div 中。</p>
+    </div>
+    <!-- <h1>标题1</h1> -->
+    <!-- <span><p>段落12.在div外且嵌套在span中。</p></span> -->
+    <p>段落 3。 在 div 外。</p>
+    <p>段落 4。 在 div 外。</p>
+    <h1>标题2</h1>
+    <p>段落 5。 在 div 外。</p>
+    <p>段落 6。 在 div 外。</p>
+    <h1>标题3</h1>
+    <p>段落 7。 在 div 外。</p>
+    <h1>标题3</h1>
+
+    <p>
+        <b>
+            <a href="https://www.baidu.com/" target="_blank">这是一个链接</a>
+        </b>
+    </p>
+    <p>
+        <b>注意：</b> a:hover 必须在 a:link 和 a:visited 之后，需要严格按顺序才能看到效果。</p>
+    <p>
+        <b>注意：</b> a:active 必须在 a:hover 之后。</p>
+    <a class="red" href="https://www.baidu.com/" target="_top">CSS 语法</a>
+
+    <p>I am a
+        <i>strong</i> man. I am a
+        <i>strong</i> man.</p>
+    <p>I am a
+        <i>strong</i> man. I am a
+        <i>strong</i> man.</p>
+    <p>
+        <b>注意:</b> 当:first-child 作用于 IE8 及更早版本的浏览器, DOCTYPE 必须已经定义.</p>
+    <!-- 这里p才是父中的第一个元素 -->
+    <div>
+        <p>I am a
+            <i>strong</i> man. I am a
+            <i>strong</i> man.</p>
+        <p>I am a
+            <i>strong</i> man. I am a
+            <i>strong</i> man.</p>
+        <p>
+            <b>注意:</b> 当:first-child 作用于 IE8 及更早版本的浏览器, DOCTYPE 必须已经定义.</p>
+    </div>
+
+    <p>
+        <b>
+            <a class="one" href="/css/" target="_blank">这个链接改变颜色</a>
+        </b>
+    </p>
+    <p>
+        <b>
+            <a class="two" href="/css/" target="_blank">这个链接改变字体大小</a>
+        </b>
+    </p>
+    <p>
+        <b>
+            <a class="three" href="/css/" target="_blank">这个链接改变背景颜色</a>
+        </b>
+    </p>
+    <p>
+        <b>
+            <a class="four" href="/css/" target="_blank">这个链接改变字体类型</a>
+        </b>
+    </p>
+    <p>
+        <b>
+            <a class="five" href="/css/" target="_blank">这个链接改变文字修饰</a>
+        </b>
+    </p>
+    <form action="demo-form.php" method="get">
+        First name:
+        <input type="text" name="fname" />
+        <br> Last name:
+        <input type="text" name="lname" />
+        <br>
+        <input type="submit" value="提交" />
+    </form>√
+
+    <p>
+        <b>注意:</b>仅当 !DOCTYPE 已经声明时 IE8 支持 :focus.</p>
+
+
+    <p class="first-line">你可以使用 "first-line" 伪元素向文本的首行设置特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。测试是否只有第一行有特殊样式。</p>
+
+    <p class="first-letter">你可以使用 "first-letter" 伪元素向文本的首字母设置特殊样式：</p>
+
+
+    <h1 class="before">This is a heading</h1>
+    <p>The :before pseudo-element inserts content before an element.</p>
+    <h1 class="after">This is a after</h1>
+    <p>
+        <b>注意:</b>仅当 !DOCTYPE 已经声明 IE8 支持这个内容属性</p>
+
+
+    <ul class="nav">
+        <li class="item">
+            <a class="active" href="#home">主页</a>
+        </li>
+        <li class="item">
+            <a href="#news">新闻</a>
+        </li>
+        <li class="item">
+            <a href="#contact">联系</a>
+        </li>
+        <li class="item">
+            <a href="#about">关于</a>
+        </li>
+    </ul>
+
+    <p>背景颜色添加到链接中显示链接的区域</p>
+    <p>注意,整个区域是可点击的链接,而不仅仅是文本。</p>
+
+    <!-- <ul>
+        <li><a class="active" href="#home">主页</a></li>
+        <li><a href="#news">新闻</a></li>
+        <li><a href="#contact">联系</a></li>
+        <li><a href="#about">关于</a></li>
+    </ul>√
+      
+      <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h2>Fixed Full-height Side Nav</h2>
+        <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
+        <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
+        <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is too long (for example if it has over 50 links inside of it).</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+        <p>Some text..</p>
+      </div> -->
+    <ul class="hor">
+        <li class="hor">
+            <a class="active" href="#home">主页</a>
+        </li>
+        <li class="hor">
+            <a href="#news">新闻</a>
+        </li>
+        <li class="hor">
+            <a href="#contact">联系</a>
+        </li>
+        <li class="hor" style="float:right">
+            <a href="#about">关于</a>
+        </li>
+    </ul>
+    <h2>下拉菜单</h2>
+    <p>鼠标移动到按钮上打开下拉菜单。</p>
+
+    <div class="dropdown">
+        <button class="dropbtn">下拉菜单</button>
+        <div class="dropdown-content">
+            <a href="http://www.runoob.com">菜鸟教程 1</a>
+            <a href="http://www.runoob.com">菜鸟教程 2</a>
+            <a href="http://www.runoob.com">菜鸟教程 3</a>
+        </div>
+    </div>
+
+
+
+
+</body>
+​
+
+</html>

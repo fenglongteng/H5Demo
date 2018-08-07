@@ -1,0 +1,323 @@
+body {
+    margin: 0;
+}
+/* 后代选择器(以空格分隔) */
+
+/* div p
+{
+	background-color:yellow;
+} */
+
+/* 子元素选择器(以大于号分隔） */
+
+/* div>p
+{
+  background-color:yellow;
+} */
+
+/* 相邻兄弟选择器（以加号分隔） */
+
+/* div+p
+{
+	background-color:yellow;
+} */
+
+/* 普通兄弟选择器（以破折号分隔） */
+
+/* div~p
+{
+  background-color:yellow;
+} */
+
+/* 伪类 */
+
+/* a:link {
+	color: #000000;
+} */
+
+/* 未访问链接*/
+
+/* a:visited {
+	color: #00FF00;
+} */
+
+/* 已访问链接 */
+
+/* a:hover {
+	color: #FF00FF;
+} */
+
+/* 鼠标移动到链接上 */
+
+/* a:active {
+	color: #0000FF;
+} */
+
+/* 鼠标点击时 */
+
+a.red:visited {
+	color: #FF0000;
+}
+
+/* 匹配第一个 <p> 元素 */
+
+/* p:first-child
+{
+	color:blue;
+}  */
+
+/* p子元素中的第一个元素 */
+
+/* p > i:first-child
+{
+	color:blue;
+}  */
+
+/* 匹配所有作为第一个子元素的 <p> 元素中的所有 <i> 元素 */
+
+/* p:first-child i
+{
+	color:blue;
+} */
+
+/* 链接样式 */
+
+a.one:link {
+	color: #ff0000;
+}
+
+a.one:visited {
+	color: #0000ff;
+}
+
+a.one:hover {
+	color: #ffcc00;
+}
+
+a.two:link {
+	color: #ff0000;
+}
+
+a.two:visited {
+	color: #0000ff;
+}
+
+a.two:hover {
+	font-size: 150%;
+}
+
+a.three:link {
+	color: #ff0000;
+}
+
+a.three:visited {
+	color: #0000ff;
+}
+
+a.three:hover {
+	background: #66ff66;
+}
+
+a.four:link {
+	color: #ff0000;
+}
+
+a.four:visited {
+	color: #0000ff;
+}
+
+a.four:hover {
+	font-family: Georgia, serif;
+}
+
+a.five:link {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+a.five:visited {
+	color: #0000ff;
+	text-decoration: none;
+}
+
+a.five:hover {
+	text-decoration: underline;
+}
+
+/* 定义焦点颜色 */
+
+input:focus {
+	background-color: yellow;
+}
+
+/* 伪元素 */
+
+p.first-line:first-line {
+	color: #ff0000;
+	font-variant: small-caps;
+}
+
+p.first-letter:first-letter {
+	color: #ff0000;
+	font-size: xx-large;
+}
+
+/* 可以同时使用 */
+
+/* p:first-letter
+{
+    color:#ff0000;
+    font-size:xx-large;
+}
+p:first-line 
+{
+    color:#0000ff;
+    font-variant:small-caps;
+} */
+
+h1.before:before {
+	content: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533097603083&di=750ce3f4564161d26bd508c55817f956&imgtype=0&src=http%3A%2F%2Fp2.wmpic.me%2Farticle%2F2015%2F04%2F15%2F1429062874_Eabqynuu.jpg);
+}
+
+h1.after::after {
+	content: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533097603083&di=750ce3f4564161d26bd508c55817f956&imgtype=0&src=http%3A%2F%2Fp2.wmpic.me%2Farticle%2F2015%2F04%2F15%2F1429062874_Eabqynuu.jpg);
+}
+
+ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+	background-color: #f1f1f1;
+	border: 1px solid #555;
+}
+li.item {
+	text-align: center;
+	border-bottom: 1px solid #555;
+	/* float: left; */
+	/* display: inline; 设置inline就是水平显示 */
+}
+ 
+li.item a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+ 
+li.item a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li.item a:hover:not(.active) {
+    background-color: #555;
+	color: white;
+}
+/* ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+} */
+
+ul.hor {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	background-color: #333;
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+	/* display: inline;   默认换行  那么宽度就是一行*/
+}
+
+li.hor {
+    float: left;
+}
+
+li.hor a {
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+	text-decoration: none;
+	width: 60;
+}
+
+li.hor a:hover {
+    background-color: yellow;
+}
+li.hor a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* 通过切换显示方式，弹出菜单 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+

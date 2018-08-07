@@ -1,0 +1,144 @@
+body{
+    background:top left no-repeat lightcyan url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532692128935&di=7f45752638ec4d0b32416ab6de461470&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20150907%2Fmp30906533_1441629699374_2.jpeg');
+}
+
+#para1
+{
+	text-align:center;
+    background-color:red;
+    color: blue;
+}
+p.chun
+{
+    text-align: center;
+    background-color: green;
+    color:gray;
+}
+h3{
+    color: yellow;
+}
+p.main{
+    text-align: justify;
+}
+p.chuntian{
+    word-spacing: 100px;/* 对中文无效*/
+    text-shadow: 2px 2px #FF0000;
+}
+
+a.link_id:link {color:#ff0000;}
+a.link_id:visited {color:#0000ff;}
+a.link_id:hover {color: yellow;font-size:150%;font-family:Georgia, serif;}
+
+table,td,th
+{
+	border:1px solid gray;
+    border-collapse: collapse;
+    text-align: right;
+}
+table
+{
+	width:100%;
+}
+th
+{
+    height:50px;
+    background-color: aqua;
+}
+
+#customers
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:100%;
+    border-collapse:collapse;
+    text-align: center;
+}
+#customers td, #customers th 
+{
+	font-size:1em;
+	border:1px solid #98bf21;
+	padding:3px 7px 2px 7px;
+}
+#customers th 
+{
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#A7C942;
+	color:#ffffff;
+}
+#customers tr.alt td 
+{
+	color:#000000;
+	background-color:#EAF2D3;
+}
+
+div.custormDiv{
+    background-color: red;
+    width: 100px;
+    border: 20px solid green;
+    padding: 40px;
+    margin: 60px;
+}
+
+p.none {border-style:none;}
+p.dotted {border-style:dotted;border-left-color: red}
+p.dashed {border-right-style: dashed}
+/* border-style 数组个数对应 4个：上、右、下、左 3个上、左右、下  2个上下、左右 */
+p.solid {border-style:dashed solid dashed solid;}
+p.double {border-style:double;}
+p.groove {border-style:groove;}
+p.ridge {border-style:ridge;}
+p.inset {border-style:inset;}
+p.outset {border-style:outset;}
+p.hidden {border-style:hidden;}
+p.outline{
+    outline: dashed yellow 5px;
+    background-color: red;
+    width: 100px;
+    border: 20px solid green;
+    padding: 40px;
+    margin: 60px;
+}
+p.ex1 {margin-top:2cm;}
+p.bottommargin {margin-bottom:25%;}
+p.padding
+{
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:50px;
+    padding-left:50px;
+    background-color: yellow;
+}
+
+p
+{
+	color:blue;
+	text-align:center;
+}
+.marked
+{
+	background-color:red;
+}
+.marked p
+{
+	color:white;
+}
+p.marked{
+    text-decoration:underline;
+}
+
+
+
+div.relative{
+    position: fixed;
+    bottom: 100px;
+    text-align: justify;
+}
+
+b.absolute_position{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: justify;
+}
