@@ -1,0 +1,101 @@
+#navlist {
+    position: relative;
+}
+
+#navlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0;
+}
+
+#navlist li,
+#navlist a {
+    height: 44px;
+    display: block;
+}
+
+#home {
+    left: 0px;
+    width: 46px;
+}
+
+/* 图片切割问题：
+    以 图片img_navsprites左上角为(0,0)   右下方向下为负值且坐标右边为横坐标。切割图片的时候超出边缘的部分由对边切割相同大小部分补充 
+*/
+
+#home {
+    background: url('http://www.runoob.com/images/img_navsprites.gif') 10px 10px;
+}
+
+#home a:hover {
+    background: url('http://www.runoob.com/images/img_navsprites_hover.gif') 0 -45px;
+}
+
+#prev {
+    left: 63px;
+    width: 43px;
+}
+
+#prev {
+    background: url('http://www.runoob.com/images/img_navsprites.gif') -47px 0;
+}
+
+#prev a:hover {
+    background: url('http://www.runoob.com/images/img_navsprites_hover.gif') -47px -45px;
+}
+
+#next {
+    left: 129px;
+    width: 43px;
+}
+
+#next {
+    background: url('http://www.runoob.com/images/img_navsprites.gif') -91px 0;
+}
+
+#next a:hover {
+    background: url('http://www.runoob.com/images/img_navsprites_hover.gif') -91px -45px;
+}
+
+@media screen
+{
+    p.test {font-family:verdana,sans-serif;font-size:14px;}
+}
+@media print
+{
+    p.test {font-family:times,serif;font-size:10px;}
+}
+@media screen,print
+{
+    p.test {font-weight:bold;}
+}
+
+/* [title]
+{
+    color:lightgray;
+} */
+
+[title=runoob]
+{
+	border:5px solid green;
+}
+
+[title~=hello] { color:blue; }
+
+[lang|=en] { color:red; }
+
+input[type="text"]
+{
+	width:150px;
+	display:block;
+	margin-bottom:10px;
+	background-color:yellow;
+}
+input[type="button"]
+{
+	width:120px;
+	margin-left:35px;
+	display:block;
+}
