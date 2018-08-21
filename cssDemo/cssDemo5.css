@@ -1,0 +1,16 @@
+*{width:100px}
+img[title="img"] {width:300px}
+.img{width:400px;}
+img:hover{width:350px}
+img{width:450px}
+/* #img{width:250px;} */
+
+
+
+[title="weight"]{
+    color: red
+}
+
+.weight{
+    color: yellow;
+}

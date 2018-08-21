@@ -37,8 +37,9 @@ table,td,th
 }
 table
 {
-	width:100%;
+	width:90%;
 }
+
 th
 {
     height:50px;
@@ -141,4 +142,18 @@ b.absolute_position{
     top: 10px;
     left: 10px;
     text-align: justify;
+}
+
+input[type="text"]
+{
+	width:150px;
+	display:block;
+	margin-bottom:10px;
+	background-color:yellow;
+}
+input[type="button"]
+{
+	width:120px;
+	margin-left:35px;
+	display:block;
 }

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="JSDemo1.css" />
+    <script src="JSDemo1.js"></script>
+</head>
+
+<body>
+    <h1>我的第一段 JavaScript</h1>
+    <p id="demo">
+        JavaScript 能改变 HTML 元素的样式。
+    </p>
+    <button type="button" onclick="myFunction()">点击这里</button>
+    <img id="myimage" onclick="changeImage()" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534139278308&di=4cc21837fb7f531c3fd562b3237e8706&imgtype=0&src=http%3A%2F%2Fimg1qn.moko.cc%2F2016-07-26%2F79726bdb-2247-4db6-ac16-6d170dc48982.jpg%3FimageView2%2F2%2Fw%2F915%2Fh%2F915"
+        width="100" height="180">
+    <h1>我的第一段 JavaScript</h1>
+    <p>请输入数字。如果输入值不是数字，浏览器会弹出提示框。</p>
+    <input id="demo1" type="text">
+    <button type="button" onclick="myFunction1()">点击这里</button>
+
+    <p>
+        JavaScript 能够直接写入 HTML 输出流中：
+    </p>
+
+    <p>
+        您只能在 HTML 输出流中使用
+        <strong>document.write</strong>。 如果您在文档已加载后使用它（比如在函数中），会覆盖整个文档。
+    </p>
+    <p>
+        有两种方式可以访问对象属性：
+    </p>
+    <p>
+        你可以使用 .property 或 ["property"].
+    </p>
+    <p id="demo3"></p>
+    <p>创建和使用对象方法。</p>
+    <p>对象方法作为一个函数定义存储在对象属性中。</p>
+    <p id="demo4"></p>
+    <p>创建和使用对象方法。</p>
+    <p>对象方法是一个函数定义,并作为一个属性值存储。</p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p>本例调用的函数会执行一个计算，然后返回结果：</p>
+    <p id="demo7"></p>
+    <br>
+    <p>点击按钮执行
+        <em>displayDate()</em> 函数.</p>
+    <button onclick="displayDate()">点这里</button>
+    <p id="demo8"></p>
+    <br>
+    <p> typeof 操作符返回变量或表达式的类型。</p>
+    <p id="demo9"></p>
+    <br>
+    <p>判断是否为数组。</p>
+    <p id="demo10"></p>
+    <p>搜索字符串 "Runoob", 并显示匹配的起始位置：</p>
+    <button onclick="myFunction11()">点我</button>
+    <p id="demo11"></p>
+    <p>替换 "microsoft" 为 "Runoob" :</p>
+    <button onclick="myFunction12()">点我</button>
+    <p id="demo12">请访问 Microsoft!</p>
+    <p>替换 "Microsoft" 为 "Runoob" :</p>
+    <button onclick="myFunction13()">点我</button>
+    <p id="demo13">请访问 Microsoft!</p>
+    <h1>我的第一个 Web 页面</h1>
+    <p>
+        浏览器中(Chrome, IE, Firefox) 使用 F12 来启用调试模式， 在调试窗口中点击 "Console" 菜单。
+    </p>
+    <p id="demo14"></p>
+    <p>开启调试工具，在代码执行到第三行前会停止执行。</p>
+    <h1>使用 "use strict":</h1>
+    <h3>不允许使用未定义的变量。</h3>
+    <p>浏览器按下 F12 开启调试模式，查看报错信息。</p>
+    <form name="myForm" action="www.baidu.com" onsubmit="return validateForm()" method="post">
+        名字:
+        <input type="text" name="fname">
+        <input type="submit" value="提交">
+    </form>
+    <h1>JavaScript 验证输入</h1>
+
+    <p>请输入 1 到 10 之间的数字：</p>
+
+    <input id="numb">
+
+    <button type="button" onclick="myFunction15()">提交</button>
+
+    <p id="demo15"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.write("<h1>这是一个标题</h1>");
+        document.write("<p>这是一个段落。</p>");
+        document.write(16 + "Volvo");
+    </script>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            id: 5566
+        };
+        document.getElementById("demo3").innerHTML =
+            person.firstName + " " + person.lastName;
+    </script>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            id: 5566,
+            //对象的方法
+            fullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        document.getElementById("demo4").innerHTML = person.fullName();
+    </script>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            id: 5566,
+            fullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        document.getElementById("demo5").innerHTML = "不加括号输出函数表达式：" + person.fullName;
+        document.getElementById("demo6").innerHTML = "加括号输出函数执行结果：" + person.fullName();
+    </script>
+    <script>
+        function myFunction(a, b) {
+            return a * b;
+        }
+        document.getElementById("demo7").innerHTML = myFunction(4, 3);
+    </script>
+    <script>
+        function displayDate() {
+            document.getElementById("demo8").innerHTML = Date();
+        }
+    </script>
+    <script>
+        cars = ["BMW", "Volvo", "Saab", "Ford"];
+        list: {
+            document.write("<h1>JavaScript 标签</h1>");
+            document.write(cars[0] + "<br>");
+            document.write(cars[0] + "<br>");
+            document.write(cars[1] + "<br>");
+            document.write(cars[2] + "<br>");
+            break list;
+            document.write(cars[3] + "<br>");
+            document.write(cars[4] + "<br>");
+            document.write(cars[5] + "<br>");
+        }
+    </script>
+
+    <script>
+        document.getElementById("demo9").innerHTML =
+            typeof "john" + "<br>" +
+            typeof 3.14 + "<br>" +
+            typeof false + "<br>" +
+            typeof [1, 2, 3, 4] + "<br>" +
+            typeof {
+                name: 'john',
+                age: 34
+            };
+    </script>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo10").innerHTML = isArray(fruits);
+
+        function isArray(myArray) {
+            return myArray.constructor.toString().indexOf("Array") > -1;
+        }
+    </script>
+    <script>
+        function myFunction11() {
+            var str = "Visit Runoob!";
+            var n = str.search("Runoob");
+            // var n = str.search(/Runoob/i);
+            document.getElementById("demo11").innerHTML = n;
+        }
+    </script>
+    <script>
+        function myFunction12() {
+            var str = document.getElementById("demo12").innerHTML;
+            var txt = str.replace(/microsoft/i, "Runoob");
+            document.getElementById("demo12").innerHTML = txt;
+        }
+    </script>
+    <script>
+        function myFunction13() {
+            var str = document.getElementById("demo13").innerHTML;
+            var txt = str.replace("Microsoft", "Runoob");
+            document.getElementById("demo13").innerHTML = txt;
+        }
+    </script>
+    <script>
+        var patt1 = new RegExp("e");
+        document.write(patt1.test("The best things in life are free"));
+    </script>
+
+    <script>
+        a = 5;
+        b = 6;
+        c = a + b;
+        console.log(c);
+    </script>
+    <script>
+        var x = 15 * 5;
+        debugger;
+        document.getElementById("demo14").innerHTML = x;
+    </script>
+    <script>
+        "use strict";
+        x = 3.14; // 报错 (x 未定义)
+    </script>
+
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["fname"].value;
+            if (x == null || x == "") {
+                alert("需要输入名字。");
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function myFunction15() {
+            var x, text;
+
+            // 获取 id="numb" 的值
+            x = document.getElementById("numb").value;
+
+            // 如果输入的值 x 不是数字或者小于 1 或者大于 10，则提示错误 Not a Number or less than one or greater than 10
+            if (isNaN(x) || x < 1 || x > 10) {
+                text = "输入错误";
+            } else {
+                text = "输入正确";
+            }
+            document.getElementById("demo15").innerHTML = text;
+        }
+    </script>
+
+
+</body>
+
+</html>
