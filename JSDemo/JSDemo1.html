@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <p id="pos">顶部定位点</p>
     <h1>我的第一段 JavaScript</h1>
     <p id="demo">
         JavaScript 能改变 HTML 元素的样式。
@@ -90,6 +91,52 @@
     <button type="button" onclick="myFunction15()">提交</button>
 
     <p id="demo15"></p>
+    <p>email 表单验证</p>
+    <form name="myForm1" action="demo-form.php" onsubmit="return validateForm1();" method="post">
+        Email:
+        <input type="text" name="email">
+        <input type="submit" value="提交">
+    </form>
+    <p>输入数字并点击验证按钮:</p>
+
+    <input id="id16" type="number" min="100" max="300" required>
+    <button onclick="myFunction16()">验证</button>
+
+    <p>如果输入的数字小于 100 或大于300，会提示错误信息。</p>
+
+    <p id="demo16"></p>
+    <p>输入数字并点击验证按钮:</p>
+
+    <input id="id17" type="number" max="300" min="100">
+    <button onclick="myFunction17()">验证</button>
+
+    <p>如果输入的数字大于 300 ( input 的 max 属性) 小于100(input 的min 属性), 会显示错误信息。</p>
+
+    <p id="demo17"></p>
+    <h2>为 JSON 字符串创建对象</h2>
+    <p id="demo18"></p>
+    <a href="javascript:void(0)">单此处什么也不会发生，void(0)的用法</a>
+    <p>点击以下链接查看结果：</p>
+    <a href="javascript:void(alert('Warning!!!'))">点我!</a>
+    <p>点击以下按钮查看结果：</p>
+    <form>
+        <input type="button" value="点我" onclick="getValue();" />
+    </form>
+    <a href="javascript:void(0);">点我没有反应的!</a>
+    <a href="#pos">点我定位到指定位置!</a>
+    <br> ...
+    <br>
+    <p>查找最大的数。</p>
+    <p id="demo19"></p>
+    <p id="demo20">call调用函数,</p>
+    <p id="demo21">apply调用函数,</p>
+    <p>局部变量计数。</p>
+    <button type="button" onclick="myFunction()">函数闭包的调用，计数!</button>
+    <p id="demo22">函数闭包的调用，0.</p>
+    
+
+
+
 
 
 
@@ -268,6 +315,112 @@
             document.getElementById("demo15").innerHTML = text;
         }
     </script>
+    <script>
+        function validateForm1() {
+            var x = document.forms["myForm1"]["email"].value;
+            var atpos = x.indexOf("@");
+            var dotpos = x.lastIndexOf(".");
+            if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                alert("不是一个有效的 e-mail 地址");
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function myFunction16() {
+            var inpObj = document.getElementById("id16");
+            if (inpObj.checkValidity() == false) {
+                document.getElementById("demo16").innerHTML = inpObj.validationMessage;
+            } else {
+                document.getElementById("demo16").innerHTML = "输入正确";
+            }
+        }
+    </script>
+    <script>
+        function myFunction17() {
+            var txt = "";
+            var inpObj = document.getElementById("id17");
+            if (!isNumeric(inpObj.value)) {
+                txt = "你输入的不是数字";
+            } else if (inpObj.validity.rangeUnderflow) {
+                txt = "输入的值太小了";
+            } else if (inpObj.validity.rangeOverflow) {
+                txt = "输入的值太大了";
+            } else {
+                txt = "输入正确";
+            }
+            document.getElementById("demo17").innerHTML = txt;
+        }
+
+        // 判断输入是否为数字
+        function isNumeric(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+    </script>
+    <script>
+        var text = '{ "sites" : [' +
+            '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+            '{ "name":"Google" , "url":"www.google.com" },' +
+            '{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+
+        obj = JSON.parse(text);
+        document.getElementById("demo18").innerHTML = obj.sites[1].name + " " + obj.sites[1].url;
+    </script>
+    <script>
+        function getValue() {
+            var a, b, c;
+            a = void(b = 5, c = 7);
+            document.write('a = ' + a + ' b = ' + b + ' c = ' + c);
+        }
+    </script>
+    <script>
+        x = findMax(1, 123, 500, 115, 44, 88);
+         
+        function findMax() {
+            var i, max = arguments[0];
+            
+            if(arguments.length < 2) return max;
+         
+            for (i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max) {
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+        document.getElementById("demo19").innerHTML = x;
+        </script>
+        <script>
+            var myObject;
+            function myFunction(a, b) {
+                return a * b;
+            }
+            myObject = myFunction.call(myObject, 10, 2);    // 返回 20
+            document.getElementById("demo20").innerHTML = myObject; 
+        </script>
+        <script>
+            var myObject, myArray;
+            function myFunction(a, b) {
+                return a * b;
+            }
+            myArray = [10, 2]
+            myObject = myFunction.apply(myObject, myArray);      // 返回 20
+            document.getElementById("demo21").innerHTML = myObject; 
+      </script>
+      <script>
+        var add = (function () {
+            var counter = 0;
+            return function () {return counter += 1;}
+        })();
+        function myFunction(){
+            document.getElementById("demo22").innerHTML = add();
+        }
+        </script>
+
+
+
+
+
 
 
 </body>
