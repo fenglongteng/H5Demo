@@ -252,19 +252,109 @@
     <div id="myDIV5"> div 元素添加了 onmousemove 事件句柄，鼠标在桔红色的框内移动时会显示随机数。
         <p>点击按钮移除 DIV 的事件句柄。</p>
         <button onclick="removeHandler()" id="myBtn5">点我</button>
-      </div>
-      <p id="demo5"></p>
-      <script>
-      document.getElementById("myDIV5").addEventListener("mousemove", myFunction);
-      function myFunction() {
-          document.getElementById("demo5").innerHTML = Math.random();
-      }
-      function removeHandler() {
-          document.getElementById("myDIV5").removeEventListener("mousemove", myFunction);
-      }
-      </script>
+    </div>
+    <p id="demo5"></p>
+    <script>
+        document.getElementById("myDIV5").addEventListener("mousemove", myFunction);
+
+        function myFunction() {
+            document.getElementById("demo5").innerHTML = Math.random();
+        }
+
+        function removeHandler() {
+            document.getElementById("myDIV5").removeEventListener("mousemove", myFunction);
+        }
+    </script>
+
+    <!-- JavaScript HTML DOM 元素 (节点) -->
 
 
+    <div id="div3">
+        <p id="p5">追加元素节点，这是一个段落。</p>
+        <p id="p6">这是另外一个段落。</p>
+    </div>
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+        var element = document.getElementById("div3");
+        element.appendChild(para);
+    </script>
+
+
+    <div id="div4">
+        <p id="p7">插入元素节点，这是一个段落。</p>
+        <p id="p8">这是另外一个段落。</p>
+    </div>
+
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+
+        var element = document.getElementById("div4");
+        var child = document.getElementById("p7");
+        element.insertBefore(para, child);
+    </script>
+
+    <div id="div5">
+        <p id="p9">这是要移除的元素节点，这是一个段落。</p>
+        <p id="p10">上面有个节点被移除了，注意看源代码，这是另外一个段落。</p>
+    </div>
+
+    <script>
+        var parent = document.getElementById("div5");
+        var child = document.getElementById("p9");
+        parent.removeChild(child);
+    </script>
+    <div id="div6">
+        <p id="p11">改元素节点被替换了，这是一个段落。</p>
+        <p id="p12">上面有个p标签被替换掉了，详情请查看源代码，这是另外一个段落。</p>
+    </div>
+
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("这是一个新的段落。");
+        para.appendChild(node);
+
+        var parent = document.getElementById("div6");
+        var child = document.getElementById("p11");
+        parent.replaceChild(para, child);
+    </script>
+
+    <h2>JavaScript HTML DOM</h2>
+
+    <p>Hello World! </p>
+
+    <p>Hello Runoob!</p>
+
+    <h1 id="demo6">demo6</h1>
+    <h1 id="demo7">demo6</h1>
+
+    <script>
+        var myCollection = document.getElementsByTagName("p");
+        document.getElementById("demo6").innerHTML = "第二个段落的内容为:<span style='color:red;'> " + myCollection[myCollection
+            .length - 1].innerHTML + '</span>';
+    </script>
+
+    <script>
+        var myNodelist = document.querySelectorAll("p");
+        document.getElementById("demo7").innerHTML = "第二个段落的内容为:<span style='color:red;'> " + myNodelist[myNodelist.length -
+            1].innerHTML + '</span>';
+    </script>
+
+<div id="ct">
+    这里是介于node与node之间的textNode
+    <p class="para">Lyndon</p>
+    这里是介于node与node之间的textNode
+    <p class="attr">123<span>dozz</span></p>
+这里是介于node与node之间的textNode
+</div>
+<script>
+    var ct = document.getElementById("ct");
+    console.log(ct.children);//子元素节点 HTMLCollection 类型
+    console.log(ct.childNodes);//所有子节点  NodeList 类型
+</script>
 
 
 
