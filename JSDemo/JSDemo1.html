@@ -131,7 +131,7 @@
     <p id="demo20">call调用函数,</p>
     <p id="demo21">apply调用函数,</p>
     <p>局部变量计数。</p>
-    <button type="button" onclick="myFunction()">函数闭包的调用，计数!</button>
+    <button type="button" onclick="myFunction22()">函数闭包的调用，计数!</button>
     <p id="demo22">函数闭包的调用，0.</p>
     
 
@@ -392,7 +392,7 @@
         </script>
         <script>
             var myObject;
-            function myFunction(a, b) {
+            function myFunction20(a, b) {
                 return a * b;
             }
             myObject = myFunction.call(myObject, 10, 2);    // 返回 20
@@ -400,7 +400,7 @@
         </script>
         <script>
             var myObject, myArray;
-            function myFunction(a, b) {
+            function myFunction21(a, b) {
                 return a * b;
             }
             myArray = [10, 2]
@@ -408,12 +408,28 @@
             document.getElementById("demo21").innerHTML = myObject; 
       </script>
       <script>
+          function person(name,age){
+              this.name = name;
+              this.age = age;
+          }
+
         var add = (function () {
             var counter = 0;
             return function () {return counter += 1;}
         })();
-        function myFunction(){
-            document.getElementById("demo22").innerHTML = add();
+
+        var exchageName = (function(){
+          var long = new person("小张",23);
+            return function(){
+                long.name = "小王";
+                long = "张麻子";
+                return long.name;
+        }
+        })();
+
+
+        function myFunction22(){
+            document.getElementById("demo22").innerHTML = exchageName();
         }
         </script>
 
