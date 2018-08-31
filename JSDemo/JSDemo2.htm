@@ -343,18 +343,20 @@
             1].innerHTML + '</span>';
     </script>
 
-<div id="ct">
-    这里是介于node与node之间的textNode
-    <p class="para">Lyndon</p>
-    这里是介于node与node之间的textNode
-    <p class="attr">123<span>dozz</span></p>
-这里是介于node与node之间的textNode
-</div>
-<script>
-    var ct = document.getElementById("ct");
-    console.log(ct.children);//子元素节点 HTMLCollection 类型
-    console.log(ct.childNodes);//所有子节点  NodeList 类型
-</script>
+    <div id="ct">
+        这里是介于node与node之间的textNode
+        <p class="para">Lyndon</p>
+        这里是介于node与node之间的textNode
+        <p class="attr">123
+            <span>dozz</span>
+        </p>
+        这里是介于node与node之间的textNode
+    </div>
+    <script>
+        var ct = document.getElementById("ct");
+        console.log(ct.children); //子元素节点 HTMLCollection 类型
+        console.log(ct.childNodes); //所有子节点  NodeList 类型
+    </script>
 
 
 

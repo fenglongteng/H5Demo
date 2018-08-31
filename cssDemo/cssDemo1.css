@@ -157,3 +157,11 @@ input[type="button"]
 	margin-left:35px;
 	display:block;
 }
+
+.className1{
+    background-color: yellow;
+}
+
+.className2{
+    border: red 1px solid; 
+}
