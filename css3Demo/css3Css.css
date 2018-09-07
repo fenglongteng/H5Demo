@@ -1,0 +1,708 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.bt {
+	border: 2px solid #a1a1a1;
+	padding: 10px 40px;
+	background: #dddddd;
+	width: 300px;
+	border-radius: 25px;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+div.border {
+	border: 15px solid transparent;
+	width: 250px;
+	padding: 10px 20px;
+}
+
+#round {
+	-webkit-border-image: url(../img/border.png) 30 30 round;
+	/* Safari 5 and older */
+	-o-border-image: url(../img/border.png) 30 30 round;
+	/* Opera */
+	border-image: url(../img/border.png) 30 30 round;
+}
+
+#stretch {
+	-webkit-border-image: url(../img/border.png) 30 30 stretch;
+	/* Safari 5 and older */
+	-o-border-image: url(../img/border.png) 30 30 stretch;
+	/* Opera */
+	border-image: url(../img/border.png) 30 30 stretch;
+}
+
+#rcorners4 {
+	border-radius: 15px 50px 30px 5px;
+	background: #8AC007;
+	padding: 20px;
+	width: 200px;
+	height: 150px;
+}
+
+#rcorners7 {
+	border-radius: 50px/15px;
+	background: #8AC007;
+	padding: 20px;
+	width: 200px;
+	height: 150px;
+}
+
+#rcorners8 {
+	border-radius: 15px/50px;
+	background: #8AC007;
+	padding: 20px;
+	width: 200px;
+	height: 150px;
+}
+
+#rcorners9 {
+	border-radius: 50%;
+	background: #8AC007;
+	padding: 20px;
+	width: 200px;
+	height: 150px;
+}
+
+#backgourd {
+	background-image: url(../img/img_flwr.gif), url(../img/paper.gif);
+	background-position: right bottom, left top;
+	background-repeat: no-repeat, repeat;
+	padding: 15px;
+}
+
+#backgourd1 {
+	background: url(../img/img_flwr.gif);
+	background-size: 80px 60px;
+	/* background-size:100% 100%;  也可用百分比 */
+	background-repeat: repeat;
+	padding-top: 40px;
+}
+
+div.background {
+	border: 1px solid black;
+	padding: 35px;
+	background-image: url(../img/icon.png);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+/* content-box, padding-box,和 border-box区域内可以放置背景图像 */
+#div1 {
+	background-origin: border-box;
+}
+
+#div2 {
+	background-origin: content-box;
+}
+
+#example1 {
+	border: 10px dotted black;
+	padding: 35px;
+	margin: 20px;
+	background: yellow;
+}
+
+#example2 {
+	border: 10px dotted black;
+	padding: 35px;
+	margin: 20px;
+	background: yellow;
+	background-clip: padding-box;
+}
+
+#example3 {
+	border: 10px dotted black;
+	padding: 35px;
+	margin: 20px;
+	background: yellow;
+	background-clip: content-box;
+}
+
+/* 水平阴影，垂直阴影，模糊的距离，以及阴影的颜色 */
+h1.textShadow {
+	text-shadow: 5px 5px 5px #FF0000;
+}
+
+div.boxShadow {
+	width: 300px;
+	height: 100px;
+	background-color: yellow;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+#boxshadow1 {
+	position: relative;
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+	padding: 10px;
+	background: white;
+}
+
+/* Make the image fit the box */
+#boxshadow1 img {
+	width: 100%;
+	border: 1px solid #8a4419;
+	border-style: inset;
+}
+
+#boxshadow1::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	/* hide shadow behind image */
+	-webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+	width: 70%;
+	left: 15%;
+	/* one half of the remaining 30% */
+	height: 100px;
+	bottom: 0;
+}
+
+div.card {
+	width: 250px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+}
+
+div.header {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px;
+	font-size: 40px;
+}
+
+div.container {
+	padding: 10px;
+}
+
+div.polaroid {
+	width: 250px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+}
+
+div.test {
+	white-space: nowrap;
+	width: 12em;
+	overflow: hidden;
+	border: 1px solid #000000;
+}
+
+div.transition {
+	width: 100px;
+	height: 100px;
+	background: red;
+	transition: width 2s;
+	-webkit-transition: width 2s;
+	/* Safari */
+}
+
+div.transition:hover {
+	width: 300px;
+}
+
+div.transition1 {
+	width: 100px;
+	height: 100px;
+	background: red;
+	-webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+	/* For Safari 3.1 to 6.0 */
+	transition: width 2s, height 2s, transform 2s;
+}
+
+div.transition1:hover {
+	width: 200px;
+	height: 200px;
+	-webkit-transform: rotate(180deg);
+	/* Chrome, Safari, Opera */
+	transform: rotate(180deg);
+}
+
+.btAnimation {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #f4511e;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.btAnimation span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.btAnimation span:after {
+	content: '»';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.btAnimation:hover span {
+	padding-right: 25px;
+}
+
+.btAnimation:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+ul.pagination {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+ul.pagination li {
+	display: inline;
+}
+
+ul.pagination li a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+}
+
+ul.pagination li a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+ul.pagination li a:hover:not(.active) {
+	background-color: #ddd;
+}
+
+div.center {
+	text-align: center;
+}
+
+ul.breadcrumb {
+	padding: 8px 16px;
+	list-style: none;
+	background-color: #eee;
+}
+
+ul.breadcrumb li {
+	display: inline;
+}
+
+ul.breadcrumb li+li:before {
+	padding: 8px;
+	color: black;
+	content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+	color: green;
+}
+
+/* 
+box-sizing: border-box;设置之后height，
+和width的宽高就包含padding的宽高，
+当height大于padingd*2是以height为高，
+当height小于2*pading时，用2*padding的值。
+ */
+.div1 {
+	width: 300px;
+	height: 100px;
+	border: 1px solid blue;
+	box-sizing: border-box;
+}
+
+.div2 {
+	width: 300px;
+	height: 500px;
+	padding: 150px;
+	border: 1px solid red;
+	box-sizing: border-box;
+}
+
+div.resize {
+	border: 2px solid;
+	padding: 10px 40px;
+	width: 300px;
+	resize: both;
+	overflow: auto;
+	text-align: justify;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input,
+textarea {
+	width: 100%;
+}
+
+/* 弹性盒子 参考http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html */
+/* flex-direction(布局方向)和justify-content（主轴线（main axis）对齐） 布局 */
+/* justify-content(主轴线布局)和align-items(垂直的交叉轴（cross axis）布局。 */
+.flex-container {
+	display: -webkit-flex;
+	display: flex;
+	width: 400px;
+	height: 400px;
+	background-color: lightgrey;
+	/* flex-direction属性决定主轴的方向（即项目的排列方向）。*/
+	/* -webkit-flex-direction: column-reverse;  
+	flex-direction: column-reverse;轴为垂直方向，起点在下沿。 */
+	/* 子元素交叉轴对齐方式 */
+	/* -webkit-align-items: flex-end;
+	align-items: flex-end; */
+	/* 多行对齐方式 */
+	-webkit-align-content: center;
+	align-content: center;
+	/* 主轴方向对齐方式 */
+	-webkit-justify-content: space-around;
+	justify-content: space-around;
+	/* 换行方式 */
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.flex-item {
+	background-color: cornflowerblue;
+	width: 100px;
+	height: 100px;
+	margin: 10px;
+}
+
+.first {
+	-webkit-order: -1;
+	order: -1;
+	/* 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。*/
+}
+
+/* 第一个弹性子元素上设置了 margin-right: auto; 。 它将剩余的空间放置在元素的右侧 */
+.flex-item:first-child {
+	margin-right: auto;
+}
+
+/* 快速居中 */
+.flex-container1 {
+	display: -webkit-flex;
+	display: flex;
+	width: 400px;
+	height: 250px;
+	background-color: lightgrey;
+}
+
+.flex-item1 {
+	background-color: cornflowerblue;
+	width: 75px;
+	height: 75px;
+	margin: auto;
+}
+
+/* 弹性元素交叉轴对齐方式 */
+.flex-container2 {
+	display: -webkit-flex;
+	display: flex;
+	width: 400px;
+	height: 250px;
+	background-color: lightgrey;
+}
+
+.flex-item2 {
+	background-color: cornflowerblue;
+	width: 60px;
+	min-height: 100px;
+	margin: 10px;
+}
+
+.item1 {
+	-webkit-align-self: flex-start;
+	align-self: flex-start;
+	/*属性允许单个项目有与其他项目不一样的对齐方式，
+	可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，
+	如果没有父元素，则等同于stretch。*/
+}
+
+.item2 {
+	-webkit-align-self: flex-end;
+	align-self: flex-end;
+}
+
+.item3 {
+	-webkit-align-self: center;
+	align-self: center;
+}
+
+.item4 {
+	-webkit-align-self: baseline;
+	align-self: baseline;
+	/* a 项目的第一行文字的基线对齐。 */
+}
+
+.item5 {
+	-webkit-align-self: stretch;
+	align-self: stretch;
+	/* 如果项目未设置高度或设为auto，将占满整个容器的高度。*/
+}
+
+/* 自定义弹性元素宽度 */
+.flex-container3 {
+	display: -webkit-flex;
+	display: flex;
+	width: 400px;
+	height: 250px;
+	background-color: lightgrey;
+}
+
+.flex-item3 {
+	background-color: cornflowerblue;
+	margin: 10px;
+	height: 50%;
+}
+
+/*
+flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
+如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+
+flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。
+如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+负值对该属性无效。
+
+flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+浏览器根据这个属性，计算主轴是否有多余空间。
+它的默认值为auto，即项目的本来大小。
+它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。
+
+*/
+.item31 {
+	-webkit-flex: 3;
+	flex: 3;
+	/*flex属性是flex-grow, flex-shrink 和 flex-basis的简写，
+	默认值为0 1 auto。后两个属性可选。
+	该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。
+    建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。*/
+}
+
+.item32 {
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+.item33 {
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+/* 多媒体查询 例一 */
+.media {
+	background-color: red;
+}
+
+@media screen and (min-width: 600px) {
+	.media {
+		background-color: lightgreen;
+	}
+}
+
+/* 多媒体查询 例二 */
+.wrapper {
+	overflow: auto;
+}
+
+#main {
+	margin-left: 4px;
+}
+
+#leftsidebar {
+	float: none;
+	width: auto;
+}
+
+#menulist {
+	margin: 0px;
+	padding: 0px
+}
+
+.menuitem {
+	background: #CDF0F6;
+	border: 1px solid #d4d4d4;
+	border-radius: 4px;
+	list-style-type: none;
+	margin: 4px;
+	padding: 2px;
+}
+
+@media screen and (min-width: 480px) {
+	#leftsidebar {
+		width: 200px;
+		float: left;
+	}
+
+	#main {
+		margin-left: 216px;
+	}
+}
+
+/* 多媒体李三 */
+
+
+ul.media {
+	list-style-type: none;
+}
+
+ul.media li a {
+	color: green;
+	text-decoration: none;
+	padding: 3px;
+	display: block;
+}
+
+@media screen and (max-width: 699px) and (min-width: 520px),
+(min-width: 1151px) {
+	ul.media li a {
+		padding-left: 30px;
+		background: url(../img/icon.png) left center no-repeat;
+		background-size: 25px 25px;
+	}
+}
+
+@media screen and (max-width: 1000px) and (min-width: 700px) {
+	ul.media li a:before {
+		content: "Email: ";
+		font-style: italic;
+		color: #666666;
+	}
+}
+
+@media screen and (min-width: 1001px) {
+	ul.media li a:after {
+		content: " ("attr(data-email) ")";
+		font-size: 12px;
+		font-style: italic;
+		color: #666666;
+	}
+}
+
+/* 响应式布局 */
+.flex-container4 {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	font-weight: bold;
+	text-align: center;
+}
+
+.flex-container4>* {
+	padding: 10px;
+	flex: 1 100%;
+}
+
+.main4 {
+	text-align: left;
+	background: cornflowerblue;
+}
+
+.header4 {
+	background: coral;
+}
+
+.footer4 {
+	background: lightgreen;
+}
+
+.aside1 {
+	background: moccasin;
+}
+
+.aside2 {
+	background: violet;
+}
+
+@media all and (min-width: 600px) {
+	.asid4e {
+		flex: 1 auto;
+	}
+}
+
+@media all and (min-width: 800px) {
+	.main4 {
+		flex: 3 0px;
+	}
+
+	.aside1 {
+		order: 1;
+	}
+
+	.main4 {
+		order: 2;
+	}
+
+	.aside2 {
+		order: 3;
+	}
+
+	.footer4 {
+		order: 4;
+	}
+}
+
+.wrapper1 {
+	display: grid;
+	grid-template-columns: 200px 50px 100px;
+	grid-template-rows: 100px 30px;
+}
+
+.wrapper1 > div {
+	background-color: yellow;
+	color: red;
+	margin: 5px;
+}
+
+/*
+文字：水平居中text-align: center; 
+文字垂直居中：line-height:40px; line-height:40px; vertical-align:middle;行高和高度要一直。
+div快速居中：确定高度宽度 margin: auto 父元素设置：display: flex;
+*/
+.wrapper1>div>div {
+	display:inline-block;
+	width: 100%;
+	height:40px;
+	text-align: center;
+	line-height:40px;
+	vertical-align: middle;
+}
+
+.wrapperItem1 {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+.wrapperItem2 {
+	grid-row-start: 2;
+	grid-row-end: 4;
+}
+
+.wrapperItem4 {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css3Css.css" />
+    <script src="css3Js.js"></script>
+</head>
+
+<body>
+
+    <div class="bt">border-radius 属性允许您为元素添加圆角边框！ </div>
+
+    <p><b>注意: </b> Internet Explorer 不支持 border-image 属性。</p>
+    <p> border-image 属性用于设置图片的边框。</p>
+    <div id="round" class="border">这里，图像平铺（重复）来填充该区域。</div>
+    <br>
+    <div id="stretch" class="border">这里，图像被拉伸以填充该区域。</div>
+
+    <p>这是我们使用的图片素材：</p>
+    <!-- 这里的目录是以当前文件目录为起始点 -->
+    <img src="../img/border.png" alt="加载本地图片失败">
+
+    <p>四个值 - border-radius: 15px 50px 30px 5px:</p>
+    <p id="rcorners4"></p>
+
+
+    <p>椭圆边框 - border-radius: 50px/15px:</p>
+    <p id="rcorners7"></p>
+
+    <p> 椭圆边框 - border-radius: 15px/50px:</p>
+    <p id="rcorners8"></p>
+
+    <p>椭圆边框 - border-radius: 50%:</p>
+    <p id="rcorners9"></p>
+
+    <div id="backgourd">
+        <h1>Lorem Ipsum Dolor</h1>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat volutpat.</p>
+        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
+            commodo consequat.</p>
+    </div>
+
+    <div id="backgourd1">
+        <p>
+            Lorem ipsum，中文又称“乱数假文”， 是指一篇常用于排版设计领域的拉丁文文章 ，主要的目的为测试文章或文字在不同字型、版型下看起来的效果。
+        </p>
+
+        <p>原始图片: <img src="../img/img_flwr.gif" alt="Flowers" width="224" height="162"></p>
+    </div>
+
+    <p>背景图像边界框的相对位置：</p>
+    <div id="div1" class="background">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+        dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+        suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    </div>
+
+    <p>背景图像的相对位置的内容框：</p>
+    <div id="div2" class="background">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+        dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+        suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    </div>
+
+    <p>没有背景剪裁 (border-box没有定义):</p>
+    <div id="example1">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat volutpat.</p>
+    </div>
+
+    <p>background-clip: padding-box:</p>
+    <div id="example2">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat volutpat.</p>
+    </div>
+
+    <p>background-clip: content-box:</p>
+    <div id="example3">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+            dolore magna aliquam erat volutpat.</p>
+    </div>
+    <h1 class="textShadow">Text-shadow effect!</h1>
+
+    <p><b>注意:</b> Internet Explorer 9 以及更早版本的浏览器不支持 text-shadow属性.</p>
+
+    <div class="boxShadow"></div>
+    <br>
+    <br>
+    <div id="boxshadow1">
+        <img src="../img/rock600x400.jpg" alt="Norway" width="300" height="200">
+    </div>
+    <br>
+    <div class="card">
+        <div class="header">
+            <h1>1</h1>
+        </div>
+
+        <div class="container">
+            <p>January 1, 2016</p>
+        </div>
+    </div>
+    <br>
+    <div class="polaroid">
+        <img src="../img/rock600x400.jpg" alt="Norway" style="width:100%">
+        <div class="container">
+            <p>Hardanger, Norway</p>
+        </div>
+    </div>
+    <br>
+    <p>以下 div 容器内的文本无法完全显示，可以看到它被裁剪了。</p>
+    <p>div 使用 &quot;text-overflow:ellipsis&quot;:</p>
+
+    <div class="test" style="text-overflow:ellipsis;">This is some long text that will not fit in the box</div>
+    <p>div 使用 &quot;text-overflow:clip&quot;:</p>
+    <div class="test" style="text-overflow:clip;">This is some long text that will not fit in the box</div>
+    <p>div 使用自定义字符串 &quot;text-overflow: &gt;&gt;&quot;(只在 Firefox 浏览器下有效):</p>
+    <div class="test" style="text-overflow:'>>';">This is some long text that will not fit in the box</div>
+
+
+    <p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+
+    <div class="transition"></div>
+
+    <p>鼠标移动到 div 元素上，查看过渡效果。</p>
+    <p><b>注意：</b>该实例无法在 Internet Explorer 9 及更早 IE 版本上工作。</p>
+
+    <div class="transition1">鼠标移动到 div 元素上，查看过渡效果。</div>
+
+    <h2>按钮动画</h2>
+
+    <button class="btAnimation" style="vertical-align:middle"><span>Hover </span></button>
+
+    <h2>简单的分页</h2>
+    <ul class="pagination">
+        <!-- 这里如果换行li之间就有间隔如果不换行li就没有间隔，这应该是一个bug -->
+        <li><a href="#">«</a></li>
+        <li><a href="#">1</a></li>
+        <li><a class="active" href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a hrehref="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">»</a></li>
+    </ul>
+
+    <div class="center">
+        <ul class="pagination">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a class="active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
+    </div>
+    <h2>面包屑导航</h2>
+    <ul class="breadcrumb">
+        <li><a href="#">首页 </a></li>
+        <li><a href="#">前端 </a></li>
+        <li><a href="#">HTML 教程 </a></li>
+        <li>HTML 段落</li>
+    </ul>
+
+
+    <div class="div1">两个 div 现在是一样大小的!</div>
+    <br>
+    <div class="div2">菜鸟教程!</div>
+
+    <p><b>注意:</b> Firefox, Safari,和 Chrome 兼容 resize 属性.</p>
+
+    <div class="resize">
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+        调整属性指定一个元素是否由用户可调整大小的。
+    </div>
+    <form action="action_page.php">
+        用户名:<br>
+        <input type="text" name="username" value="runoob"><br>
+        邮箱:<br>
+        <input type="text" name="email" value="429240967@qq.com"><br>
+        评论:<br>
+        <textarea name="message" rows="5" cols="30"></textarea>
+        <br><br>
+        <input type="submit" value="提交">
+    </form>
+
+    <p><strong>提示：</strong> 可以尝试移除样式中的 box-sizing 属性，看看会发生什么。注意移除后部分浏览器 input, textarea, 和 submit 按钮的宽度不一致。</p>
+
+
+    <div class="flex-container">
+        <div class="flex-item">flex item 1</div>
+        <div class="flex-item">flex item 2</div>
+        <div class="flex-item first">flex item 3</div>
+        <div class="flex-item">flex item 4</div>
+        <div class="flex-item five">flex item 5</div>
+    </div>
+    <br>
+    <div class="flex-container1">
+        <div class="flex-item1">Perfect centering!</div>
+    </div>
+    <br>
+
+    <div class="flex-container2">
+        <div class="flex-item2 item1">flex-start</div>
+        <div class="flex-item2 item2">flex-end</div>
+        <div class="flex-item2 item3">center</div>
+        <div class="flex-item2 item4">baseline</div>
+        <div class="flex-item2 item5">stretch</div>
+    </div>
+    <br>
+
+    <div class="flex-container3">
+        <div class="flex-item3 item31">flex item 1</div>
+        <div class="flex-item3 item32">flex item 2</div>
+        <div class="flex-item3 item33">flex item 3</div>
+    </div>
+
+    <h1>重置浏览器窗口查看效果！</h1>
+    <p class="media">如果媒体类型屏幕的可视窗口宽度小于 480 px ，背景颜色将改变。</p>
+
+    <div class="wrapper">
+        <div id="leftsidebar">
+            <ul id="menulist">
+                <li class="menuitem">Menu-item 1</li>
+                <li class="menuitem">Menu-item 2</li>
+                <li class="menuitem">Menu-item 3</li>
+                <li class="menuitem">Menu-item 4</li>
+                <li class="menuitem">Menu-item 5</li>
+            </ul>
+        </div>
+        <div id="main">
+            <h1>重置浏览器窗口查看效果！</h1>
+            <p>在屏幕可视窗口尺寸大于 480 像素时将菜单浮动到页面左侧。</p>
+        </div>
+    </div>
+
+    <h1>重置浏览器窗口，查看效果!</h1>
+
+    <ul class="media">
+        <li><a data-email="johndoe@example.com" href="mailto:johndoe@example.com">John Doe</a></li>
+        <li><a data-email="marymoe@example.com" href="mailto:marymoe@example.com">Mary Moe</a></li>
+        <li><a data-email="amandapanda@example.com" href="mailto:amandapanda@example.com">Amanda Panda</a></li>
+    </ul>
+
+
+    <div class="flex-container4">
+        <header class="header4">头部</header>
+        <article class="main4">
+            <p>菜鸟教程 - 学的不仅是技术，更是梦想！菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python，Java，Ruby，C，PHP ,
+                MySQL等各种编程语言的基础知识。 同时本站中也提供了大量的在线实例，通过实例，您可以更好的学习编程。</p>
+        </article>
+        <aside class="aside4 aside1">边栏 1</aside>
+        <aside class="aside4 aside2">边栏 2</aside>
+        <footer class="footer4">底部</footer>
+    </div>
+
+    <div class="wrapper1">
+        <div class="wrapperItem1"><div>1</div></div>
+        <div class="wrapperItem2"><div>2</div></div>
+        <div class="wrapperItem3"><div>3</div></div>
+        <div class="wrapperItem4"><div>4</div></div>
+        <div class="wrapperItem5"><div>5</div></div>
+        <div class="wrapperItem6"><div>6</div></div>
+    </div>
+
+
+</body>
+
+</html>

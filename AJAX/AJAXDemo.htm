@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="AJAXDemo.css" />
+    <script src="AJAXDemo.js"></script>
+</head>
+
+<body>
+    <div id="myDiv"></div>
+    <h2>AJAX</h2>
+    <button type="button" onclick="loadXMLDoc()">get请求数据</button>
+    <br>
+    <button type="button" onclick="loadXMLDoc1()">post请求数据</button>
+    <br>
+    <button type="button" onclick="loadXMLDoc2()">同步阻塞式请求</button>
+    <br>
+    <button type="button" onclick="loadXMLDoc3()">responseXML</button>
+    <br>
+    <button type="button" onclick="myFunction()">多请求任务用回调函数封装</button>
+    <h3>在输入框中尝试输入字母 a: AJAX ASP/PHP 实例</h3>
+    <form action="">
+        输入姓名: <input type="text" id="txt1" onkeyup="showHint(this.value)" />
+    </form>
+    <p>提示信息: <span id="txtHint"></span></p>
+</body>
+
+</html>
