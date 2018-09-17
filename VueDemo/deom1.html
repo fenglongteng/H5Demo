@@ -7,23 +7,1214 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="vue.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <script src="vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
 </head>
 
 <body>
 
+    <!-- 当一个 Vue 实例被创建时，
+    它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。
+    当这些属性的值发生改变时，html 视图将也会产生相应的变化。 -->
+    <div id="vue_det">
+        <h1>site : {{site}}</h1>
+        <h1>url : {{url}}</h1>
+        <h1>Alexa : {{alexa}}</h1>
+    </div>
+    <script type="text/javascript">
+        // 我们的数据对象
+        var data = {
+            site: "菜鸟教程",
+            url: "www.runoob.com",
+            alexa: 10000
+        }
+        var vm = new Vue({
+            el: '#vue_det',
+            data: data
+        })
+        // 它们引用相同的对象！
+        document.write(vm.site === data.site) // true
+        document.write("<br>")
+        document.write(vm.$data === data) // true  这里用data加了前缀$,以便与用户定义的属性区分开来
+        document.write("<br>")
+        // 设置属性也会影响到原始数据
+        vm.site = "Runoob"
+        document.write(data.site + "<br>") // Runoob
+
+        // ……反之亦然
+        data.alexa = 1234
+        document.write(vm.alexa) // 1234
+    </script>
+
+    <!-- v开头的都是vue指令，：后面跟的是参数， .后面跟的是修饰符 -->
+
+    <!-- v-html v-text -->
+    <!--
+    v-model双向绑定
+    <1> .lazy  默认情况下，v-model同步输入框的值和数据。可以通过这个修饰符，转变为在change事件再同步。 <input v-model.lazy="msg">
+    <2> .number 自动将用户的输入值转化为数值类型 <input v-model.number="msg">
+    <3> .trim 自动过滤用户输入的首尾空格<input v-model.trim="msg"> 
+    -->
     <div id="app">
-        <p>{{ message }}</p>
+        <input type="text" v-model.number="message">
+        <h1>{{ message }}</h1>
+        <h1>{{details()}}</h1>
+        <h2 v-html="message"></h2>
+        <h3 v-text="message"></h3>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world',
+            },
+            methods: {
+                details: function () {
+                    return this.message + " - 学的不仅是技术，更是梦想！";
+                }
+            }
+        })
+    </script>
+
+    <!-- v-if  v-else  v-else-if -->
+
+    <!-- v-if可以实现条件渲染，Vue会根据表达式的值的真假条件来渲染元素。
+    <a v-if="ok">yes</a>
+    如果属性值ok为true，则显示。否则，不会渲染这个元素。
+    v-else
+    v-else是搭配v-if使用的，它必须紧跟在v-if或者v-else-if后面，否则不起作用。
+    <a v-if="ok">yes</a>
+    <a v-else>No</a>
+    8. v-else-if
+    v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。
+    -->
+    <div id="v-if-else">
+        <div v-if="type==='A'">
+            A
+        </div>
+        <div v-else-if="type==='B'">
+            B
+        </div>
+        <div v-else-if="type==='C'">
+            C
+        </div>
+        <div v-else>
+            Not A,B,C
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el: '#v-if-else',
+            data: {
+                type: "C"
+            }
+        });
+    </script>
+
+    <!-- 控制模块的显示/隐藏 v-if、v-show .
+    如果v-if的值是false，则这个元素被销毁，不在dom中。
+    但是v-show的元素会始终被渲染并保存在dom中，它只是简单的切换css的dispaly属性。
+    v-if有更高的切换开销, v-show有更高的初始渲染开销。
+    因此，如果要非常频繁的切换，则使用v-show较好；如果在运行时条件不太可能改变，则v-if较好
+     -->
+    <template>
+        <div id="app1">
+            <div v-if="isIf">
+                if
+            </div>
+            <div v-show="ifShow">
+                show
+            </div>
+            <button @click="toggleShow">切换显示隐藏状态</button>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            name: 'app1',
+            data() {
+                return {
+                    isIf: true,
+                    ifShow: true,
+                    loginType: "username"
+                }
+            },
+            methods: {
+                toggleShow: function () {
+                    this.ifShow = this.ifShow ? false : true;
+                    this.isIf = this.isIf ? false : true;
+                }
+            }
+        }
+    </script>
+
+
+    <!-- 渲染循环列表 v-for示例1 -->
+
+    <div id="wantuizhijia">
+        <ul>
+            <li v-for="site in sites"> {{site.name}} </li>
+            <li>--------------</li>
+        </ul>
     </div>
 
     <script>
         new Vue({
-            el: '#app',
+            el: '#wantuizhijia',
             data: {
-                message: 'Hello Vue.js!'
+                sites: [{
+                        name: '网推之家'
+                    },
+                    {
+                        name: '谷歌'
+                    },
+                    {
+                        name: '淘宝'
+                    }
+                ]
+            }
+        });
+    </script>
+
+    <!-- 渲染循环列表 v-for示例2 -->
+    <div id="wangtuizhijia1">
+        <ul>
+            <li v-for="value in object">
+                {{ value }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#wangtuizhijia1',
+            data: {
+                object: {
+                    name: '汇票盟',
+                    url: 'http://www.pjmeng.com',
+                    slogan: '美好生活，等待你的开创！'
+                }
             }
         })
     </script>
+    <!-- 渲染循环列表 v-for迭代整数 
+    当然这里也可以只有两个
+    <li v-for="(value, key) in object">
+   {{ key }} : {{ value }}
+   </li> -->
+    <div id="wangtuizhijia2">
+        <ul>
+            <li v-for="(value, key, index) in object">
+                {{ index }} {{ key }}:{{ value }}
+            </li>
+
+        </ul>
+        <ul>
+            <li v-for="n in 10">
+                这是一个for循环1~10 {{ n }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#wangtuizhijia2',
+            data: {
+                object: {
+                    name: '汇票盟',
+                    url: 'http://www.pjmeng.com',
+                    slogan: '美好生活，等待你的开创！'
+                }
+            }
+        })
+    </script>
+
+    <!-- 事件绑定 -->
+
+    <!-- v-on v-on主要用来监听dom事件，以便执行一些代码块。表达式可以是一个方法名。简写为：【 @ 】 -->
+    <div id="event">
+        <button @click="consoleLog">监听dom事件，简写@</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#event',
+            methods: {
+                consoleLog: function (event) {
+                    alert("按钮点击事件监听");
+                }
+            }
+        })
+    </script>
+
+    <!-- 带参数 -->
+    <div id="app_sy">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app_sy',
+            methods: {
+                say: function (message) {
+                    alert(message)
+                }
+            }
+        })
+    </script>
+
+    <!-- 事件修饰符 Vue.js 为 v-on 提供了事件修饰符来处理 DOM 事件细节
+    内联 JavaScript 语句
+    使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。
+    因此，用v-on:click.prevent.self会阻止所有的点击，
+    而 v-on:click.self.prevent 只会阻止对元素自身的点击。
+    .stop 阻止事件继续传播
+    .prevent 事件不再重载页面
+    .capture 使用事件捕获模式,即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理
+    .self 只当在 event.target 是当前元素自身时触发处理函数
+    .once 事件将只会触发一次
+    .passive 告诉浏览器你不想阻止事件的默认行为
+     -->
+    <!-- 阻止单击事件继续传播 -->
+    <a v-on:click.stop="doThis"></a>
+
+    <!-- 提交事件不再重载页面 -->
+    <form v-on:submit.prevent="onSubmit"></form>
+
+    <!-- 修饰符可以串联 -->
+    <a v-on:click.stop.prevent="doThat"></a>
+
+    <!-- 只有修饰符 -->
+    <form v-on:submit.prevent></form>
+
+    <!-- 添加事件监听器时使用事件捕获模式 -->
+    <!-- 即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理 -->
+    <div v-on:click.capture="doThis">...</div>
+
+    <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+    <!-- 即事件不是从内部元素触发的 -->
+    <div v-on:click.self="doThat">...</div>
+
+    <!-- 点击事件将只会触发一次 -->
+    <a v-on:click.once="doThis"></a>
+
+    <!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+    <!-- 而不会等待 `onScroll` 完成  -->
+    <!-- 这其中包含 `event.preventDefault()` 的情况 -->
+    <div v-on:scroll.passive="onScroll">...</div>
+
+
+
+    <!-- HTML 属性中的值应使用 v-bind 指令。 -->
+    <!-- id绑定 -->
+    <div id="app_5">
+        {{5+5}}<br>
+        {{ ok ? 'YES' : 'NO' }}<br>
+        {{ message.split('').reverse().join('') }}
+        <div v-bind:id="'list-' + id">菜鸟教程</div>
+    </div>
+
+    <style>
+        #list-1 {
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        new Vue({
+            el: '#app_5',
+            data: {
+                ok: true,
+                message: 'RUNOOB',
+                id: 1
+            }
+        })
+    </script>
+
+    <!-- 属性绑定 -->
+
+    <!-- 对象语法： -->
+    <!-- v-bind用来动态的绑定一个或者多个特性。
+    没有参数时，可以绑定到一个包含键值对的对象。
+    常用于动态绑定class和style。以及href等。
+    简写为一个冒号【 ：】   'is-active':isActive引号之内的都是元素属性 非引号内是vue实例对象属性-->
+    <div id="app2">
+        <!--当data里面定义的isActive等于true时，is-active这个类才会被添加起作用-->
+        <!--当data里面定义的hasError等于true时，text-danger这个类才会被添加起作用-->
+        <div v-bind:class="{'is-active':isActive, 'text-danger':hasError}">v-bind:class 指令</div>
+    </div>
+    <style>
+        .is-active {
+            background-color: yellow;
+        }
+
+        .text-danger {
+            border: 2px dotted red;
+        }
+    </style>
+    <script>
+        var app = new Vue({
+            el: '#app2',
+            data: {
+                isActive: true,
+                hasError: true
+            }
+        })
+    </script>
+
+    <!-- 数组语法 -->
+    <div id="app3">
+        <!--数组语法：errorClass在data对应的类一定会添加-->
+        <!--is-active是对象语法，根据activeClass对应的取值决定是否添加-->
+        <p :class="[{'p-active':activeClass},errorClass]">数组类绑定方式</p>
+    </div>
+    <style>
+        .text-background {
+            background-color: blue;
+        }
+
+        .p-active {
+            border: 3px double black;
+        }
+    </style>
+    <script>
+        var app = new Vue({
+            el: '#app3',
+            data: {
+                activeClass: true,
+                errorClass: 'text-background'
+            }
+        })
+    </script>
+
+    <!-- 直接绑定数据对象 -->
+    <div id="app4">
+        <!--在vue实例的data中定义了classObject对象，这个对象里面是所有类名及其真值-->
+        <!--当里面的类的值是true时会被渲染-->
+        <div :class="classObject">12345</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app4',
+            data: {
+                classObject: {
+                    'is-active': false,
+                    'text-danger': true
+                }
+            }
+        })
+    </script>
+
+    <!-- Vue.js style(内联样式) -->
+
+    <div id="app_6">
+        <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">菜鸟教程</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app_6',
+            data: {
+                activeColor: 'green',
+                fontSize: 30
+            }
+        })
+    </script>
+    <div id="app_7">
+        <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
+    </div>
+    ​
+    <!-- 一个样式数组 -->
+    <script>
+        new Vue({
+            el: '#app_7',
+            data: {
+                baseStyles: {
+                    color: 'green',
+                    fontSize: '30px'
+                },
+                overridingStyles: {
+                    'font-weight': 'bold'
+                }
+            }
+        })
+    </script>
+    <!-- 一个样式对象 -->
+    <div id="app_8">
+        <div v-bind:style="styleObject">菜鸟教程</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app_8',
+            data: {
+                styleObject: {
+                    color: 'green',
+                    fontSize: '30px'
+                }
+            }
+        })
+    </script>
+
+    <!-- 参数在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性： -->
+    <div id="app6">
+        <pre><a v-bind:href="url" v-bind:target="target">菜鸟教程</a></pre>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                url: 'http://www.runoob.com',
+                target: '_blank'
+            }
+        })
+    </script>
+
+    <!-- 自定义过滤器，过滤器函数接受表达式的值作为第一个参数。 -->
+
+    <div id="app7">
+        {{ message | capitalize }}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app7',
+            data: {
+                message: 'runoob'
+            },
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1)
+                }
+            }
+        })
+    </script>
+
+    <!-- 计算属性computed 处理复杂问题 -->
+    <!-- 声明了一个计算属性 reversedMessage 。
+      提供的函数将用作属性 vm.reversedMessage 的 getter 。
+      vm.reversedMessage 依赖于 vm.message，在 vm.message 发生改变时，
+      vm.reversedMessage 也会更新。 -->
+
+    <!-- computed vs methods
+      computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。
+      而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+      可以说使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性。
+    -->
+    <div id="app8">
+        <p>原始字符串: {{ message }}</p>
+        <p>计算后反转字符串: {{ message.split('').reverse().join('') }}</p>
+        <p>计算后反转字符串: {{ reversedMessage }}</p>
+        <p>使用方法后反转字符串: {{ reversedMessage2() }}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app8',
+            data: {
+                message: '计算属性computed 处理复杂问题'
+            },
+            computed: {
+                // 计算属性的 getter
+                reversedMessage: function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            methods: {
+                reversedMessage2: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+
+    <!-- computed 的set方法 -->
+    <div id="app9">
+        <!-- 这里没有调用get方法 -->
+        <p>{{ site }}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app9',
+            data: {
+                name: 'Google',
+                url: 'http://www.google.com'
+            },
+            computed: {
+                site: {
+                    // getter
+                    get: function () {
+                        return this.name + ' ' + this.url
+                    },
+                    // setter
+                    set: function (newValue) {
+                        var names = newValue.split(' ')
+                        this.name = names[0]
+                        this.url = names[names.length - 1]
+                    }
+                }
+            }
+        });
+        // 调用 setter， vm.name 和 vm.url 也会被对应更新
+        vm.site = '菜鸟教程 http://www.runoob.com';
+        document.write('name: ' + vm.name);
+        document.write('<br>');
+        document.write('url: ' + vm.url);
+    </script>
+
+    <!-- watch 来响应数据的变化。 -->
+    <div id="app10">
+        <p style="font-size:25px;">计数器: {{ counter }}</p>
+        <button @click="counter--" style="font-size:25px;">点我</button>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app10',
+            data: {
+                counter: 1
+            }
+        });
+        vm.$watch('counter', function (nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+    </script>
+    <!-- watch 来响应数据的变化。 
+    watch 对象创建了两个方法 kilometers 和 meters。
+    当我们再输入框输入数据时，watch 会实时监听数据变化并改变自身的值。-->
+    <div id="computed_props">
+        千米 : <input type="text" v-model="kilometers">
+        米 : <input type="text" v-model="meters">
+    </div>
+    <p id="info"></p>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#computed_props',
+            data: {
+                kilometers: 0,
+                meters: 0
+            },
+            methods: {},
+            computed: {},
+            watch: {
+                kilometers: function (val) {
+                    this.kilometers = val;
+                    this.meters = val * 1000;
+                },
+                meters: function (val) {
+                    this.kilometers = val / 1000;
+                    this.meters = val;
+                }
+            }
+        });
+        // $watch 是一个实例方法
+        vm.$watch('kilometers', function (newValue, oldValue) {
+            // 这个回调将在 vm.kilometers 改变后调用
+            document.getElementById("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+        })
+    </script>
+
+    <!-- Vue.js 表单 -->
+
+    <!-- v-model 复选框绑定数组，或者 单个布尔值 -->
+    <div id="app11">
+        <p>单个复选框：</p>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+
+        <p>多个复选框：</p>
+        <!-- for作用是标签关联input，比如 <input id="aa"> <label for="aa">aa</label>,这时候点击这个标签input就会获得焦点 -->
+        <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+        <label for="runoob">Runoob</label>
+        <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+        <label for="google">Google</label>
+        <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+        <label for="taobao">taobao</label>
+        <br>
+        <span>选择的值为: {{ checkedNames }}</span>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app11',
+            data: {
+                checked: false,
+                checkedNames: []
+            }
+        })
+    </script>
+    <!-- 单选绑定 -->
+    <div id="app12">
+        <input type="radio" value="Runoob" v-model="picked">
+        <label for="runoob">Runoob</label>
+        <br>
+        <input type="radio" value="Google" v-model="picked">
+        <label for="google">Google</label>
+        <br>
+        <span>选中值为: {{ picked }}</span>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app12',
+            data: {
+                picked: 'Runoob'
+            }
+        })
+    </script>
+    <!-- select 列表绑定 -->
+    <div id="app13">
+        <select v-model="selected" name="fruit">
+            <option value="">选择一个网站</option>
+            <option value="www.runoob.com">Runoob</option>
+            <option value="www.google.com">Google</option>
+        </select>
+
+        <div id="output">
+            选择的网站是: {{selected}}
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app13',
+            data: {
+                selected: ''
+            }
+        })
+    </script>
+
+    <!-- 组件化 -->
+
+    <!-- 全局组件 -->
+    <div id="app14">
+        <runoob></runoob>
+    </div>
+
+    <script>
+        // 注册
+        Vue.component('runoob', {
+            template: '<h1>自定义组件!</h1>'
+        })
+        // 创建根实例
+        new Vue({
+            el: '#app14'
+        })
+    </script>
+
+    <!-- 局部组件 -->
+    <div id="app15">
+        <runoob></runoob>
+    </div>
+
+    <script>
+        var Child = {
+            template: '<h1>自定义组件!</h1>'
+        }
+
+        // 创建根实例
+        new Vue({
+            el: '#app15',
+            components: {
+                // <runoob> 将只在父模板可用
+                'runoob': Child
+            }
+        })
+    </script>
+
+    <!-- prop 是父组件用来传递数据的一个自定义属性。 -->
+    <div id="app16">
+        <child message="hello!"></child>
+    </div>
+
+    <script>
+        // 注册
+        Vue.component('child', {
+            // 声明 props
+            props: ['message'],
+            // 同样也可以在 vm 实例中像 “this.message” 这样使用
+            template: '<span>{{ message }}</span>'
+        })
+        // 创建根实例
+        new Vue({
+            el: '#app16'
+        })
+    </script>
+
+    <!-- 也可以用 v-bind 动态绑定 props 的值到父组件的数据中。每当父组件的数据变化时，该变化也会传导给子组件： -->
+    <div id="app17">
+        <div>
+            <input v-model="parentMsg">
+            <br>
+            <child v-bind:message="parentMsg"></child>
+        </div>
+    </div>
+
+    <script>
+        // 注册
+        Vue.component('child', {
+            // 声明 props
+            props: ['message'],
+            // 同样也可以在 vm 实例中像 "this.message" 这样使用
+            template: '<span>{{ message }}</span>'
+        })
+        // 创建根实例
+        new Vue({
+            el: '#app17',
+            data: {
+                parentMsg: '父组件内容'
+            }
+        })
+    </script>
+    <!-- prop高级应用 -->
+    <!-- 注意: prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是不会反过来。 -->
+    <div id="app18">
+        <ol>
+            <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+        new Vue({
+            el: '#app18',
+            data: {
+                sites: [{
+                        text: 'Runoob'
+                    },
+                    {
+                        text: 'Google'
+                    },
+                    {
+                        text: 'Taobao'
+                    }
+                ]
+            }
+        })
+    </script>
+    <!--
+    自定义事件 
+    父组件是使用 props 传递数据给子组件，但如果子组件要把数据传递回去，就需要使用自定义事件！
+      -->
+    <!-- 
+    如果你想在某个组件的根元素上监听一个原生事件。可以使用 .native 修饰 v-on 。例如： 
+    <my-component v-on:click.native="doTheThing"></my-component>
+     -->
+    <div id="app19">
+        <div id="counter-event-example">
+            <p>{{ total }}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+    </div>
+    ​
+    <script>
+        Vue.component('button-counter', {
+            template: '<button v-on:click="incrementHandler">{{ counter }}</button>',
+            data: function () {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                incrementHandler: function () {
+                    this.counter += 1
+                    this.$emit('increment')
+                }
+            },
+        })
+        new Vue({
+            el: '#counter-event-example',
+            data: {
+                total: 0
+            },
+            methods: {
+                incrementTotal: function () {
+                    this.total += 1
+                }
+            }
+        })
+    </script>
+
+    <!-- Vue.js 自定义指令 -->
+
+    <!-- 全局指令 -->
+    <div id="app20">
+        <p>页面载入时，input 元素自动获取焦点：</p>
+        <input v-focus>
+    </div>
+
+    <script>
+        // 注册一个全局自定义指令 v-focus
+        Vue.directive('focus', {
+            // 当绑定元素插入到 DOM 中。
+            inserted: function (el) {
+                // 聚焦元素
+                el.focus()
+            }
+        })
+        // 创建根实例
+        new Vue({
+            el: '#app20'
+        })
+    </script>
+    <!-- 局部指令 -->
+    <div id="app21">
+        <p>页面载入时，input 元素自动获取焦点：</p>
+        <input v-focus>
+    </div>
+
+    <script>
+        // 创建根实例
+        new Vue({
+            el: '#app21',
+            directives: {
+                // 注册一个局部的自定义指令 v-focus
+                focus: {
+                    // 指令的定义
+                    inserted: function (el) {
+                        // 聚焦元素
+                        el.focus()
+                    }
+                }
+            }
+        })
+    </script>
+
+    <!-- 钩子函数 -->
+
+    <!-- 
+        指令定义函数提供了几个钩子函数（可选）：
+
+    bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
+
+    inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。
+
+    update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
+
+    componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
+
+    unbind: 只调用一次， 指令与元素解绑时调用。
+
+    钩子函数参数
+    钩子函数的参数有：
+
+    el: 指令所绑定的元素，可以用来直接操作 DOM 。
+    binding: 一个对象，包含以下属性：
+    name: 指令名，不包括 v- 前缀。
+    value: 指令的绑定值， 例如： v-my-directive="1 + 1", value 的值是 2。
+    oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+    expression: 绑定值的表达式或变量名。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
+    arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
+    modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
+    vnode: Vue 编译生成的虚拟节点。
+    oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。 
+    -->
+
+    <div id="app22" v-runoob:hello.a.b="message">
+    </div>
+    <script>
+        Vue.directive('runoob', {
+            bind: function (el, binding, vnode) {
+                var s = JSON.stringify
+                el.innerHTML =
+                    'name: ' + s(binding.name) + '<br>' +
+                    'value: ' + s(binding.value) + '<br>' +
+                    'expression: ' + s(binding.expression) + '<br>' +
+                    'argument: ' + s(binding.arg) + '<br>' +
+                    'modifiers: ' + s(binding.modifiers) + '<br>' +
+                    'vnode keys: ' + Object.keys(vnode).join(', ')
+            }
+        })
+        new Vue({
+            el: '#app22',
+            data: {
+                message: '菜鸟教程!'
+            }
+        })
+    </script>
+    <!-- 指令函数 -->
+    <div id="app23">
+        <div v-runoob="{ color: 'green', text: '菜鸟教程!' }"></div>
+    </div>
+
+    <script>
+        Vue.directive('runoob', function (el, binding) {
+            // 简写方式设置文本及背景颜色
+            el.innerHTML = binding.value.text
+            el.style.backgroundColor = binding.value.color
+        })
+        new Vue({
+            el: '#app23'
+        })
+    </script>
+
+    <!-- 路由 -->
+    <div id="app24">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 0. 如果使用模块化机制编程，導入Vue和VueRouter，要调用 Vue.use(VueRouter)
+
+        // 1. 定义（路由）组件。
+        // 可以从其他文件 import 进来
+        const Foo = {
+            template: '<div>foo</div>'
+        }
+        const Bar = {
+            template: '<div>bar</div>'
+        }
+
+        // 2. 定义路由
+        // 每个路由应该映射一个组件。 其中"component" 可以是
+        // 通过 Vue.extend() 创建的组件构造器，
+        // 或者，只是一个组件配置对象。
+        // 我们晚点再讨论嵌套路由。
+        const routes = [{
+                path: '/foo',
+                component: Foo
+            },
+            {
+                path: '/bar',
+                component: Bar
+            }
+        ]
+
+        // 3. 创建 router 实例，然后传 `routes` 配置
+        // 你还可以传别的配置参数, 不过先这么简单着吧。
+        const router = new VueRouter({
+            routes // （缩写）相当于 routes: routes
+        })
+
+        // 4. 创建和挂载根实例。
+        // 记得要通过 router 配置参数注入路由，
+        // 从而让整个应用都有路由功能
+        const app = new Vue({
+            router
+        }).$mount('#app24')
+
+        // 现在，应用已经启动了！
+    </script>
+
+    <!-- 过渡动画 -->
+
+    <!-- 通常我们都使用 CSS 过渡来实现效果。 -->
+    <div id="databinding">
+        <button v-on:click="show = !show">点我</button>
+        <transition name="fade">
+            <p v-show="show" v-bind:style="styleobj">css过渡动画实例</p>
+        </transition>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#databinding',
+            data: {
+                show: true,
+                styleobj: {
+                    fontSize: '30px',
+                    color: 'red'
+                }
+            },
+            methods: {}
+        });
+    </script>
+    <style>
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 2s
+        }
+
+        .fade-enter,
+        .fade-leave-to
+
+        /* .fade-leave-active, 2.1.8 版本以下 */
+            {
+            opacity: 0
+        }
+    </style>
+
+    <!-- CSS 动画但是在动画中 v-enter 类名在节点插入 DOM 后不会立即删除，
+        而是在 animationend 事件触发时删除。 -->
+    <div id="databinding1">
+        <button v-on:click="show = !show">点我</button>
+        <transition name="bounce">
+            <p v-if="show">CSS 动画！</p>
+        </transition>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#databinding1',
+            data: {
+                show: true
+            }
+        })
+    </script>
+    <style>
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <!-- 自定义过渡的类名-->
+    <div id="databinding2">
+        <button v-on:click="show = !show">点我</button>
+        <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+            <p v-if="show">自定义过渡的类名，可以引入第三方动画库</p>
+        </transition>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#databinding2',
+            data: {
+                show: true
+            }
+        })
+    </script>
+
+    <!-- Vue.js Ajax(vue-resource) -->
+    <!--
+    基于全局Vue对象使用http
+    Vue.http.get('/someUrl', [options]).then(successCallback, errorCallback);
+    Vue.http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+
+    在一个Vue实例内使用$http
+    this.$http.get('/someUrl', [options]).then(successCallback, errorCallback);
+    this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback); 
+    -->
+
+
+    <div id="box">
+        <input type="button" @click="getMothod()" value="点我异步获取数据(Get)">
+        <br>
+        <input type="button" @click="postMothod()" value="点我异步获取数据(Post)">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#box',
+            data: {
+                msg: 'Hello World!',
+            },
+            methods: {
+                getMothod: function () {
+                    //发送get请求 
+                    //如果需要发送参数列表 this.$http.get('get.php',{a:1,b:2}).then(function(res){
+                    this.$http.get('http://www.runoob.com/try/ajax/ajax_info.txt').then(function (res) {
+                        document.write(res.body);
+                    }, function () {
+                        window.alert('请求失败处理');
+                    });
+                },
+                postMothod: function () {
+                    //发送 post 请求
+                    this.$http.post('http://www.runoob.com/try/ajax/demo_test_post.php', {
+                        name: "菜鸟教程",
+                        url: "http://www.runoob.com"
+                    }, {
+                        emulateJSON: true
+                    }).then(function (res) {
+                        document.write(res.body);
+                    }, function (res) {
+                        window.alert(res.status);
+                    });
+                }
+            }
+        });
+    </script>
+
+    <!-- Vue.set -->
+    <div id="app25">
+        <p style="font-size:25px;">计数器: {{ products.id }}</p>
+        <button @click="products.id++" style="font-size:25px;">点我</button>
+    </div>
+    <script type="text/javascript">
+        var myproduct = {
+            "id": 1,
+            name: "book",
+            "price": "20.00"
+        };
+        var vm = new Vue({
+            el: '#app25',
+            data: {
+                counter: 1,
+                products: myproduct
+            }
+        });
+//  在产品中添加了数量属性 qty，但是 get/set 方法只可用于 id，name 和 price 属性，
+//  却不能在 qty 属性中使用。 我们不能通过添加 Vue 对象来实现响应。
+//  Vue 主要在开始时创建所有属性。 如果我们要实现这个功能，可以通过 Vue.set 来实现：
+//  vm.products.qty = "1";
+//  这样可以实现对象增加属性观察
+        Vue.set(myproduct, 'qty', 1);
+        console.info(vm);
+        vm.$watch('counter', function (nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+    </script>
+
+    <!-- 删除属性 -->
+    <div id = "app26">
+        <p style = "font-size:25px;">计数器: {{ products.id }}</p>
+        <button @click = "products.id++" style = "font-size:25px;">点我</button>
+     </div>
+     <script type = "text/javascript">
+     var myproduct = {"id":1, name:"book", "price":"20.00"};
+     var vm = new Vue({
+        el: '#app26',
+        data: {
+           counter: 1,
+           products: myproduct
+        }
+     });
+     Vue.delete(myproduct, 'price');
+     console.log(vm);
+     vm.$watch('counter', function(nval, oval) {
+        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+     });
+     </script>
+
+
 
 </body>
 
