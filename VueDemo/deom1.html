@@ -39,7 +39,8 @@
         document.write("<br>")
         document.write(vm.$data === data) // true  这里用data加了前缀$,以便与用户定义的属性区分开来
         document.write("<br>")
-        // 设置属性也会影响到原始数据
+        // 设置属性也会影响到原始数据。当这些数据改变时，视图会进行重渲染。
+        //值得注意的是只有当实例被创建时 data 中存在的属性才是响应式的。后添加的没有set方法，除非再设置下
         vm.site = "Runoob"
         document.write(data.site + "<br>") // Runoob
 
@@ -341,7 +342,8 @@
     <!-- v-bind用来动态的绑定一个或者多个特性。
     没有参数时，可以绑定到一个包含键值对的对象。
     常用于动态绑定class和style。以及href等。
-    简写为一个冒号【 ：】   'is-active':isActive引号之内的都是元素属性 非引号内是vue实例对象属性-->
+    简写为一个冒号【 ：】  
+    'is-active':isActive引号之内的都是元素属性 非引号内是vue实例对象属性-->
     <div id="app2">
         <!--当data里面定义的isActive等于true时，is-active这个类才会被添加起作用-->
         <!--当data里面定义的hasError等于true时，text-danger这个类才会被添加起作用-->
@@ -424,11 +426,11 @@
             }
         })
     </script>
+
+    <!-- 一个样式数组 -->
     <div id="app_7">
         <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
     </div>
-    ​
-    <!-- 一个样式数组 -->
     <script>
         new Vue({
             el: '#app_7',
@@ -475,7 +477,7 @@
         })
     </script>
 
-    <!-- 自定义过滤器，过滤器函数接受表达式的值作为第一个参数。 -->
+    <!-- 自定义过滤器，过滤器函数接受表达式的值作为第一个参数。 这里capitalize接受message作为参数-->
 
     <div id="app7">
         {{ message | capitalize }}
@@ -497,26 +499,26 @@
         })
     </script>
 
-    <!-- 计算属性computed 处理复杂问题 -->
+    <!-- 计算属性 computed  处理复杂问题 -->
     <!-- 声明了一个计算属性 reversedMessage 。
       提供的函数将用作属性 vm.reversedMessage 的 getter 。
-      vm.reversedMessage 依赖于 vm.message，在 vm.message 发生改变时，
-      vm.reversedMessage 也会更新。 -->
+      适合于依赖属性有大的计算量时缓存计算结果
+    -->
 
     <!-- computed vs methods
-      computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。
-      而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
-      可以说使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性。
+     计算属性是基于它们的依赖进行缓存的。只在相关依赖发生改变时它们才会重新求值。
+     这就意味着只要 message 还没有发生改变，
+     多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。
     -->
     <div id="app8">
         <p>原始字符串: {{ message }}</p>
+        <!-- 所有的数据绑定，Vue.js 都提供了完全的 JavaScript 单个表达式支持。 -->
         <p>计算后反转字符串: {{ message.split('').reverse().join('') }}</p>
         <p>计算后反转字符串: {{ reversedMessage }}</p>
         <p>使用方法后反转字符串: {{ reversedMessage2() }}</p>
     </div>
-
     <script>
-        var vm = new Vue({
+        var vm_app8 = new Vue({
             el: '#app8',
             data: {
                 message: '计算属性computed 处理复杂问题'
@@ -534,6 +536,14 @@
                 }
             }
         })
+        //8秒执行，message改变了，reversedMessage也将调用
+        setTimeout("changeMessage()", 6000);
+
+        function changeMessage() {
+            vm_app8;
+            vm_app8.message = "春天在哪里啊春天在哪里"
+            window.alert("定时器翻转字符串")
+        }
     </script>
 
     <!-- computed 的set方法 -->
@@ -571,7 +581,9 @@
         document.write('url: ' + vm.url);
     </script>
 
-    <!-- watch 来响应数据的变化。 -->
+    <!-- watch 侦听器 来响应数据的变化。
+        这个方式比计算属性更灵活、更有用的,当需要在数据变化时执行异步或开销较大的操作时，可以监听到变化量，变化过程，做多个操作 -->
+
     <div id="app10">
         <p style="font-size:25px;">计数器: {{ counter }}</p>
         <button @click="counter--" style="font-size:25px;">点我</button>
@@ -605,7 +617,7 @@
             methods: {},
             computed: {},
             watch: {
-                kilometers: function (val) {
+                kilometers: function (val, oldVal) {
                     this.kilometers = val;
                     this.meters = val * 1000;
                 },
@@ -818,7 +830,7 @@
             <button-counter v-on:increment="incrementTotal"></button-counter>
         </div>
     </div>
-    ​
+    <!-- ​一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝： -->
     <script>
         Vue.component('button-counter', {
             template: '<button v-on:click="incrementHandler">{{ counter }}</button>',
@@ -830,7 +842,9 @@
             methods: {
                 incrementHandler: function () {
                     this.counter += 1
-                    this.$emit('increment')
+                    this.$emit('increment', {
+                        counter: self.counter
+                    })
                 }
             },
         })
@@ -840,7 +854,7 @@
                 total: 0
             },
             methods: {
-                incrementTotal: function () {
+                incrementTotal: function (emitVar) {
                     this.total += 1
                 }
             }
@@ -889,6 +903,102 @@
                     }
                 }
             }
+        })
+    </script>
+
+    <!-- 动态组件 用于动态组件且基于 DOM 内模板的限制来工作。-->
+    <!-- v-bind:is = string | Object (组件的选项对象)  当currentTabComponent改变时，组件也跟着改变 -->
+    <!--
+    -bind:key 其实不只是vue，react中在执行列表渲染时也会要求给每个组件添加上key这个属性。
+
+    要解释key的作用，不得不先介绍一下虚拟DOM的Diff算法了。
+    
+    我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。
+    
+    vue和react的虚拟DOM的Diff算法大致相同，其核心是基于两个简单的假设：
+    
+    1. 两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。
+    
+    2. 同一层级的一组节点，他们可以通过唯一的id进行区分。
+    
+    基于以上这两点假设，使得虚拟DOM的Diff算法的复杂度从O(n^3)降到了O(n)。
+ -->
+    <p>动态组件</p>
+    <div id="dynamic-component-demo" class="demo">
+        <button v-for="tab in tabs" v-bind:key="tab" v-bind:class="['tab-button', { active: currentTab === tab }]"
+            v-on:click="currentTab = tab">{{ tab }}</button>
+        <component v-bind:is="currentTabComponent" class="tab"></component>
+    </div>
+
+    <style>
+        .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+    }
+    .tab-button:hover {
+        background: #e0e0e0;
+    }
+    .tab-button.active {
+        background: #e0e0e0;
+    }
+    .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+  </style>
+
+    <script>
+        Vue.component('tab-home', {
+            template: '<div>Home component</div>'
+        })
+        Vue.component('tab-posts', {
+            template: '<div>Posts component</div>'
+        })
+        Vue.component('tab-archive', {
+            template: '<div>Archive component</div>'
+        })
+
+        new Vue({
+            el: '#dynamic-component-demo',
+            data: {
+                currentTab: 'Home',
+                tabs: ['Home', 'Posts', 'Archive']
+            },
+            computed: {
+                currentTabComponent: function () {
+                    return 'tab-' + this.currentTab.toLowerCase()
+                }
+            }
+        })
+    </script>
+
+    <!--插槽分发内容 将父组件的内容放到子组件指定的位置叫做内容分发 -->
+    <div>
+        <alert-box>
+            这是一个插槽^^^^^^^
+        </alert-box>
+    </div>
+
+    <style>
+        .demo-alert-box{
+        background-color: red;
+    }
+    </style>
+
+    <script>
+        Vue.component('alert-box', {
+            template: `
+        <div class="demo-alert-box">
+        <strong>Error!</strong>
+        <slot></slot>
+        </div>
+        `
         })
     </script>
 
@@ -1164,6 +1274,7 @@
     </script>
 
     <!-- Vue.set -->
+
     <div id="app25">
         <p style="font-size:25px;">计数器: {{ products.id }}</p>
         <button @click="products.id++" style="font-size:25px;">点我</button>
@@ -1181,11 +1292,11 @@
                 products: myproduct
             }
         });
-//  在产品中添加了数量属性 qty，但是 get/set 方法只可用于 id，name 和 price 属性，
-//  却不能在 qty 属性中使用。 我们不能通过添加 Vue 对象来实现响应。
-//  Vue 主要在开始时创建所有属性。 如果我们要实现这个功能，可以通过 Vue.set 来实现：
-//  vm.products.qty = "1";
-//  这样可以实现对象增加属性观察
+        //  在产品中添加了数量属性 qty，但是 get/set 方法只可用于 id，name 和 price 属性，
+        //  却不能在 qty 属性中使用。 我们不能通过添加 Vue 对象来实现响应。
+        //  Vue 主要在开始时创建所有属性。 如果我们要实现这个功能，可以通过 Vue.set 来实现：
+        //  vm.products.qty = "1";
+        //  这样可以实现对象增加属性观察
         Vue.set(myproduct, 'qty', 1);
         console.info(vm);
         vm.$watch('counter', function (nval, oval) {
@@ -1194,25 +1305,29 @@
     </script>
 
     <!-- 删除属性 -->
-    <div id = "app26">
-        <p style = "font-size:25px;">计数器: {{ products.id }}</p>
-        <button @click = "products.id++" style = "font-size:25px;">点我</button>
-     </div>
-     <script type = "text/javascript">
-     var myproduct = {"id":1, name:"book", "price":"20.00"};
-     var vm = new Vue({
-        el: '#app26',
-        data: {
-           counter: 1,
-           products: myproduct
-        }
-     });
-     Vue.delete(myproduct, 'price');
-     console.log(vm);
-     vm.$watch('counter', function(nval, oval) {
-        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
-     });
-     </script>
+    <div id="app26">
+        <p style="font-size:25px;">计数器: {{ products.id }}</p>
+        <button @click="products.id++" style="font-size:25px;">点我</button>
+    </div>
+    <script type="text/javascript">
+        var myproduct = {
+            "id": 1,
+            name: "book",
+            "price": "20.00"
+        };
+        var vm = new Vue({
+            el: '#app26',
+            data: {
+                counter: 1,
+                products: myproduct
+            }
+        });
+        Vue.delete(myproduct, 'price');
+        console.log(vm);
+        vm.$watch('counter', function (nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+    </script>
 
 
 
