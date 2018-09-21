@@ -1022,12 +1022,12 @@
 
     el: 指令所绑定的元素，可以用来直接操作 DOM 。
     binding: 一个对象，包含以下属性：
-    name: 指令名，不包括 v- 前缀。
-    value: 指令的绑定值， 例如： v-my-directive="1 + 1", value 的值是 2。
-    oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
-    expression: 绑定值的表达式或变量名。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
-    arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
-    modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
+        name: 指令名，不包括 v- 前缀。
+        value: 指令的绑定值， 例如： v-my-directive="1 + 1", value 的值是 2。
+        oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+        expression: 绑定值的表达式或变量名。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
+        arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
+        modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
     vnode: Vue 编译生成的虚拟节点。
     oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。 
     -->
@@ -1050,7 +1050,7 @@
         new Vue({
             el: '#app22',
             data: {
-                message: '菜鸟教程!'
+                message: '菜鸟教程!，钩子函数 。'
             }
         })
     </script>
@@ -1077,8 +1077,8 @@
             <!-- 使用 router-link 组件来导航. -->
             <!-- 通过传入 `to` 属性指定链接. -->
             <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-            <router-link to="/foo">Go to Foo</router-link>
-            <router-link to="/bar">Go to Bar</router-link>
+            <router-link to="/foo">路由：Go to Foo</router-link>
+            <router-link to="/bar">路由：Go to Bar</router-link>
         </p>
         <!-- 路由出口 -->
         <!-- 路由匹配到的组件将渲染在这里 -->
